@@ -1,0 +1,503 @@
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Click Counter – Contatore Animato</title>
+  <meta name="description" content="Pagina interattiva con bottone e contatore animato dei click." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800;900&display=swap" rel="stylesheet" />
+
+  <style>
+    /* ── RESET & BASE ─────────────────────────────── */
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    :root {
+      --bg-start: #0d0d1a;
+      --bg-end: #0a0a2e;
+      --accent1: #7c3aed;
+      --accent2: #ec4899;
+      --accent3: #06b6d4;
+      --glass-bg: rgba(255, 255, 255, 0.05);
+      --glass-border: rgba(255, 255, 255, 0.12);
+      --text: #f1f5f9;
+      --muted: #94a3b8;
+    }
+
+    html,
+    body {
+      height: 100%;
+      font-family: 'Outfit', sans-serif;
+      background: linear-gradient(135deg, var(--bg-start) 0%, var(--bg-end) 100%);
+      color: var(--text);
+      overflow: hidden;
+    }
+
+    /* ── CANVAS PARTICLES ─────────────────────────── */
+    #particles-canvas {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    /* ── LAYOUT ───────────────────────────────────── */
+    .page {
+      position: relative;
+      z-index: 1;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 2.5rem;
+    }
+
+    /* ── TITLE ────────────────────────────────────── */
+    .title {
+      font-size: clamp(1rem, 3vw, 1.4rem);
+      font-weight: 300;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    /* ── COUNTER CARD ─────────────────────────────── */
+    .counter-card {
+      position: relative;
+      background: var(--glass-bg);
+      border: 1px solid var(--glass-border);
+      border-radius: 2rem;
+      padding: 2.5rem 4rem;
+      text-align: center;
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      box-shadow:
+        0 0 0 1px rgba(124, 58, 237, 0.2),
+        0 8px 40px rgba(0, 0, 0, 0.4),
+        inset 0 1px 0 rgba(255, 255, 255, 0.08);
+    }
+
+    .counter-label {
+      font-size: 0.85rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 0.5rem;
+    }
+
+    .counter-value {
+      font-size: clamp(5rem, 15vw, 10rem);
+      font-weight: 900;
+      line-height: 1;
+      background: linear-gradient(135deg, #a78bfa 0%, #ec4899 50%, #06b6d4 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      transition: transform 0.1s ease;
+      display: inline-block;
+      min-width: 3ch;
+    }
+
+    .counter-value.bump {
+      animation: bump 0.3s cubic-bezier(0.36, 0.07, 0.19, 0.97);
+    }
+
+    @keyframes bump {
+      0% {
+        transform: scale(1);
+      }
+
+      35% {
+        transform: scale(1.18);
+      }
+
+      70% {
+        transform: scale(0.94);
+      }
+
+      100% {
+        transform: scale(1);
+      }
+    }
+
+    /* ── GLOW RING BEHIND CARD ────────────────────── */
+    .counter-card::before {
+      content: '';
+      position: absolute;
+      inset: -2px;
+      border-radius: 2rem;
+      background: linear-gradient(135deg, var(--accent1), var(--accent2), var(--accent3));
+      z-index: -1;
+      opacity: 0;
+      transition: opacity 0.4s ease;
+      filter: blur(8px);
+    }
+
+    .counter-card.active::before {
+      opacity: 0.6;
+    }
+
+    /* ── CLICK BUTTON ─────────────────────────────── */
+    .btn-click {
+      position: relative;
+      padding: 1.1rem 3.5rem;
+      font-family: 'Outfit', sans-serif;
+      font-size: 1.15rem;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      color: #fff;
+      border: none;
+      border-radius: 100px;
+      cursor: pointer;
+      outline: none;
+      background: linear-gradient(135deg, var(--accent1) 0%, var(--accent2) 100%);
+      box-shadow:
+        0 4px 24px rgba(124, 58, 237, 0.45),
+        0 1px 0 rgba(255, 255, 255, 0.15) inset;
+      transition:
+        transform 0.15s ease,
+        box-shadow 0.15s ease;
+      user-select: none;
+      -webkit-tap-highlight-color: transparent;
+      overflow: hidden;
+    }
+
+    .btn-click::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      border-radius: 100px;
+      background: linear-gradient(135deg, #9f67ff 0%, #f472b6 100%);
+      opacity: 0;
+      transition: opacity 0.2s ease;
+    }
+
+    .btn-click:hover {
+      transform: translateY(-3px) scale(1.03);
+      box-shadow:
+        0 8px 36px rgba(124, 58, 237, 0.6),
+        0 1px 0 rgba(255, 255, 255, 0.15) inset;
+    }
+
+    .btn-click:hover::after {
+      opacity: 1;
+    }
+
+    .btn-click:active {
+      transform: translateY(1px) scale(0.97);
+      box-shadow:
+        0 2px 12px rgba(124, 58, 237, 0.4),
+        0 1px 0 rgba(255, 255, 255, 0.08) inset;
+    }
+
+    .btn-click span {
+      position: relative;
+      z-index: 1;
+    }
+
+    /* ── RIPPLE ───────────────────────────────────── */
+    .ripple {
+      position: absolute;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.35);
+      transform: scale(0);
+      animation: ripple-anim 0.6s linear;
+      pointer-events: none;
+    }
+
+    @keyframes ripple-anim {
+      to {
+        transform: scale(4);
+        opacity: 0;
+      }
+    }
+
+    /* ── FLOATING +1 ──────────────────────────────── */
+    .float-label {
+      position: fixed;
+      font-family: 'Outfit', sans-serif;
+      font-weight: 800;
+      font-size: 1.5rem;
+      color: #a78bfa;
+      pointer-events: none;
+      animation: floatUp 0.9s ease forwards;
+      z-index: 999;
+      text-shadow: 0 0 12px rgba(167, 139, 250, 0.8);
+    }
+
+    @keyframes floatUp {
+      0% {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+      }
+
+      80% {
+        opacity: 0.8;
+      }
+
+      100% {
+        opacity: 0;
+        transform: translateY(-80px) scale(0.6);
+      }
+    }
+
+    /* ── MILESTONE MESSAGE ────────────────────────── */
+    .milestone {
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%) scale(0);
+      background: linear-gradient(135deg, var(--accent1), var(--accent2));
+      color: #fff;
+      font-weight: 700;
+      font-size: 1.8rem;
+      padding: 1rem 2.5rem;
+      border-radius: 1.2rem;
+      pointer-events: none;
+      z-index: 1000;
+      opacity: 0;
+      animation: milestoneAnim 1.6s ease forwards;
+      text-align: center;
+      box-shadow: 0 0 40px rgba(236, 72, 153, 0.5);
+      white-space: nowrap;
+    }
+
+    @keyframes milestoneAnim {
+      0% {
+        opacity: 0;
+        transform: translate(-50%, -50%) scale(0.5);
+      }
+
+      20% {
+        opacity: 1;
+        transform: translate(-50%, -50%) scale(1.05);
+      }
+
+      50% {
+        opacity: 1;
+        transform: translate(-50%, -50%) scale(1);
+      }
+
+      80% {
+        opacity: 1;
+        transform: translate(-50%, -50%) scale(1);
+      }
+
+      100% {
+        opacity: 0;
+        transform: translate(-50%, -50%) scale(0.8);
+      }
+    }
+
+    /* ── RESET BUTTON ─────────────────────────────── */
+    .btn-reset {
+      font-family: 'Outfit', sans-serif;
+      font-size: 0.8rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--muted);
+      background: transparent;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 100px;
+      padding: 0.45rem 1.4rem;
+      cursor: pointer;
+      transition: color 0.2s, border-color 0.2s, background 0.2s;
+    }
+
+    .btn-reset:hover {
+      color: #fff;
+      border-color: rgba(255, 255, 255, 0.3);
+      background: rgba(255, 255, 255, 0.06);
+    }
+  </style>
+</head>
+
+<body>
+
+  <canvas id="particles-canvas"></canvas>
+
+  <main class="page">
+    <p class="title">Contatore di Click</p>
+
+    <div class="counter-card" id="counter-card">
+      <p class="counter-label">Numero di Click</p>
+      <div class="counter-value" id="counter-value">0</div>
+    </div>
+
+    <button class="btn-click" id="btn-click" aria-label="Clicca per incrementare il contatore">
+      <span>✦ Clicca qui ✦</span>
+    </button>
+
+    <button class="btn-reset" id="btn-reset" aria-label="Azzera il contatore">Reset</button>
+  </main>
+
+  <script>
+    /* ── STATE ─────────────────────────────────────── */
+    let count = 0;
+
+    const counterEl = document.getElementById('counter-value');
+    const cardEl = document.getElementById('counter-card');
+    const btnClick = document.getElementById('btn-click');
+    const btnReset = document.getElementById('btn-reset');
+
+    /* ── MILESTONES ─────────────────────────────────── */
+    const milestones = {
+      1: '🎉 Primo click!',
+      5: '⚡ 5 click!',
+      10: '🔥 10 click!',
+      25: '💥 25 click!',
+      50: '🚀 50 click!',
+      100: '🏆 100 CLICK!',
+      200: '👑 200 – Leggenda!',
+    };
+
+    /* ── MAIN CLICK HANDLER ─────────────────────────── */
+    btnClick.addEventListener('click', (e) => {
+      count++;
+      updateCounter();
+      spawnRipple(e, btnClick);
+      spawnFloatLabel(e);
+      if (milestones[count]) showMilestone(milestones[count]);
+      burstParticles(e.clientX, e.clientY);
+    });
+
+    /* ── RESET ──────────────────────────────────────── */
+    btnReset.addEventListener('click', () => {
+      count = 0;
+      counterEl.textContent = '0';
+      cardEl.classList.remove('active');
+    });
+
+    /* ── UPDATE DISPLAY ─────────────────────────────── */
+    function updateCounter() {
+      counterEl.textContent = count;
+      counterEl.classList.remove('bump');
+      void counterEl.offsetWidth; // reflow
+      counterEl.classList.add('bump');
+      cardEl.classList.add('active');
+      setTimeout(() => cardEl.classList.remove('active'), 400);
+    }
+
+    /* ── RIPPLE ─────────────────────────────────────── */
+    function spawnRipple(e, btn) {
+      const rect = btn.getBoundingClientRect();
+      const size = Math.max(rect.width, rect.height);
+      const ripple = document.createElement('span');
+      ripple.className = 'ripple';
+      Object.assign(ripple.style, {
+        width: size + 'px',
+        height: size + 'px',
+        left: (e.clientX - rect.left - size / 2) + 'px',
+        top: (e.clientY - rect.top - size / 2) + 'px',
+      });
+      btn.appendChild(ripple);
+      ripple.addEventListener('animationend', () => ripple.remove());
+    }
+
+    /* ── FLOATING +1 ─────────────────────────────────── */
+    function spawnFloatLabel(e) {
+      const lbl = document.createElement('div');
+      lbl.className = 'float-label';
+      lbl.textContent = '+1';
+      const offset = (Math.random() - 0.5) * 40;
+      Object.assign(lbl.style, {
+        left: (e.clientX + offset) + 'px',
+        top: (e.clientY - 20) + 'px',
+      });
+      document.body.appendChild(lbl);
+      lbl.addEventListener('animationend', () => lbl.remove());
+    }
+
+    /* ── MILESTONE BANNER ────────────────────────────── */
+    function showMilestone(text) {
+      const el = document.createElement('div');
+      el.className = 'milestone';
+      el.textContent = text;
+      document.body.appendChild(el);
+      el.addEventListener('animationend', () => el.remove());
+    }
+
+    /* ── PARTICLE CANVAS ─────────────────────────────── */
+    const canvas = document.getElementById('particles-canvas');
+    const ctx = canvas.getContext('2d');
+
+    let W, H;
+    function resize() {
+      W = canvas.width = window.innerWidth;
+      H = canvas.height = window.innerHeight;
+    }
+    resize();
+    window.addEventListener('resize', resize);
+
+    /* Background drifting particles */
+    const bgParticles = Array.from({ length: 80 }, () => ({
+      x: Math.random() * 1920,
+      y: Math.random() * 1080,
+      r: Math.random() * 1.5 + 0.3,
+      vx: (Math.random() - 0.5) * 0.3,
+      vy: (Math.random() - 0.5) * 0.3,
+      alpha: Math.random() * 0.5 + 0.1,
+      hue: Math.random() * 60 + 240,
+    }));
+
+    /* Burst particles pool */
+    const bursts = [];
+
+    function burstParticles(x, y) {
+      const colors = ['#a78bfa', '#ec4899', '#06b6d4', '#fbbf24', '#34d399'];
+      for (let i = 0; i < 18; i++) {
+        const angle = (Math.PI * 2 * i) / 18 + Math.random() * 0.4;
+        const speed = Math.random() * 5 + 2;
+        bursts.push({
+          x, y,
+          vx: Math.cos(angle) * speed,
+          vy: Math.sin(angle) * speed,
+          r: Math.random() * 4 + 2,
+          alpha: 1,
+          color: colors[Math.floor(Math.random() * colors.length)],
+        });
+      }
+    }
+
+    function animate() {
+      ctx.clearRect(0, 0, W, H);
+
+      /* Draw background particles */
+      for (const p of bgParticles) {
+        p.x += p.vx; p.y += p.vy;
+        if (p.x < 0) p.x = W; if (p.x > W) p.x = 0;
+        if (p.y < 0) p.y = H; if (p.y > H) p.y = 0;
+        ctx.beginPath();
+        ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+        ctx.fillStyle = `hsla(${p.hue}, 80%, 70%, ${p.alpha})`;
+        ctx.fill();
+      }
+
+      /* Draw burst particles */
+      for (let i = bursts.length - 1; i >= 0; i--) {
+        const b = bursts[i];
+        b.x += b.vx; b.y += b.vy;
+        b.vy += 0.12;
+        b.alpha -= 0.025;
+        if (b.alpha <= 0) { bursts.splice(i, 1); continue; }
+        ctx.beginPath();
+        ctx.arc(b.x, b.y, b.r, 0, Math.PI * 2);
+        ctx.fillStyle = b.color + Math.round(b.alpha * 255).toString(16).padStart(2, '0');
+        ctx.fill();
+      }
+
+      requestAnimationFrame(animate);
+    }
+    animate();
+  </script>
+</body>
+
+</html>
