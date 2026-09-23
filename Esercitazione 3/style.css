@@ -1,0 +1,238 @@
+/* ==========================================================================
+   Esercitazione 3 - NBA Player Cards Style
+   Focalizzato su: Selettori CSS, Struttura con div, Box Model e Barre Grafiche
+   ========================================================================== */
+
+/* Reset di base e Box Sizing */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+/* Stili generali del corpo pagina */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #0f172a;
+    color: #f8fafc;
+    min-height: 100vh;
+    padding: 20px 10px 40px;
+}
+
+/* Intestazione Principale */
+.header-main {
+    text-align: center;
+    margin-bottom: 35px;
+}
+
+.header-main h1 {
+    font-size: 2.2rem;
+    color: #f59e0b;
+    letter-spacing: 1px;
+    margin-bottom: 8px;
+}
+
+.header-main .subtitle {
+    font-size: 1rem;
+    color: #94a3b8;
+}
+
+/* Contenitore principale delle schede */
+.cards-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 25px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* Singola Carta Giocatore */
+.player-card {
+    background-color: #1e293b;
+    border: 2px solid #334155;
+    border-radius: 14px;
+    width: 320px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
+    transition: transform 0.25s ease, border-color 0.25s ease;
+}
+
+.player-card:hover {
+    transform: translateY(-5px);
+    border-color: #f59e0b;
+}
+
+/* Header interno della Carta */
+.card-header {
+    border-bottom: 1px solid #334155;
+    padding-bottom: 12px;
+    margin-bottom: 15px;
+}
+
+.player-name {
+    font-size: 1.35rem;
+    color: #ffffff;
+    margin-bottom: 4px;
+}
+
+.player-team {
+    font-size: 0.85rem;
+    color: #38bdf8;
+    font-weight: bold;
+    display: inline-block;
+}
+
+/* Contenitore Immagine */
+.image-wrapper {
+    width: 100%;
+    height: 190px;
+    border-radius: 8px;
+    overflow: hidden;
+    margin-bottom: 14px;
+    border: 1px solid #475569;
+    background-color: #0f172a;
+}
+
+.player-photo {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+/* Sezione Informazioni e Descrizione */
+.player-info {
+    margin-bottom: 18px;
+    flex-grow: 1;
+}
+
+.role-badge {
+    display: inline-block;
+    background-color: #334155;
+    color: #fbbf24;
+    font-size: 0.75rem;
+    font-weight: 600;
+    padding: 4px 10px;
+    border-radius: 20px;
+    margin-bottom: 10px;
+}
+
+.player-bio {
+    font-size: 0.9rem;
+    color: #cbd5e1;
+    line-height: 1.45;
+}
+
+/* Riquadro Statistiche con barre stile grafico */
+.stats-card-box {
+    background-color: #0f172a;
+    border: 1px solid #334155;
+    border-radius: 8px;
+    padding: 12px;
+}
+
+.stats-title {
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    color: #94a3b8;
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+.stat-row {
+    display: flex;
+    align-items: center;
+    margin-bottom: 8px;
+    font-size: 0.8rem;
+}
+
+.stat-row:last-child {
+    margin-bottom: 0;
+}
+
+.stat-label {
+    width: 95px;
+    color: #94a3b8;
+    flex-shrink: 0;
+}
+
+/* Barra di sfondo (Track) */
+.stat-bar-bg {
+    flex-grow: 1;
+    height: 8px;
+    background-color: #334155;
+    border-radius: 4px;
+    margin: 0 8px;
+    overflow: hidden;
+}
+
+/* Riempimento Barra (Grafico) */
+.stat-fill {
+    height: 100%;
+    border-radius: 4px;
+}
+
+/* Valori percentuali per le barre statistiche */
+.fill-pts-lebron {
+    width: 90%;
+    background-color: #f59e0b;
+}
+
+.fill-reb-lebron {
+    width: 75%;
+    background-color: #38bdf8;
+}
+
+.fill-ast-lebron {
+    width: 74%;
+    background-color: #34d399;
+}
+
+.fill-pts-curry {
+    width: 83%;
+    background-color: #f59e0b;
+}
+
+.fill-reb-curry {
+    width: 47%;
+    background-color: #38bdf8;
+}
+
+.fill-ast-curry {
+    width: 64%;
+    background-color: #34d399;
+}
+
+.fill-pts-giannis {
+    width: 78%;
+    background-color: #f59e0b;
+}
+
+.fill-reb-giannis {
+    width: 98%;
+    background-color: #38bdf8;
+}
+
+.fill-ast-giannis {
+    width: 49%;
+    background-color: #34d399;
+}
+
+.stat-val {
+    width: 32px;
+    text-align: right;
+    font-weight: bold;
+    color: #ffffff;
+}
+
+/* Footer */
+.footer-main {
+    text-align: center;
+    margin-top: 40px;
+    font-size: 0.8rem;
+    color: #64748b;
+}
