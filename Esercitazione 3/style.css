@@ -12,6 +12,7 @@ body {
     background-size: cover;
     color: #1c71c5;
     padding: 20px 10px 40px;
+    align-content: center;
 }
 
 h1 {
@@ -20,13 +21,14 @@ h1 {
     text-align: center;
     font-size: 30px;
     padding-bottom: 10px;
+    padding-top: 5px;
     border-bottom: red solid 2px;
 }
 
 /* Carta giocatore */
 .player-card {
     color: white;
-    background-color: blue;
+    background-color: rgba(5, 8, 168, 0.479);
     border: 2px solid red;
     border-radius: 14px;
     width: 600px;
@@ -39,6 +41,8 @@ h1 {
 .player-name {
     text-align: center;
     font-weight: bold;
+    margin-bottom: 20px;
+    border: 1px solid red;
 }
 
 .player-stats {
@@ -54,6 +58,15 @@ h1 {
     margin-bottom: 5px;
     display: flex;
     align-items: center;
+
+}
+
+.profilepic {
+    alt: "foto profilo";
+    width: 100px;
+    border-color: rgb(255, 217, 0);
+    border-width: 1px;
+    border-style: dashed;
 }
 
 footer {
