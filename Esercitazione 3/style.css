@@ -44,7 +44,8 @@ footer {
     background-color: rgba(10, 11, 59, 0.6);
     border: 2px solid red;
     border-radius: 14px;
-    width: 600px;
+    width: 100%;
+    max-width: 600px;
     padding: 20px;
     box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
     margin-left: auto;
@@ -54,9 +55,10 @@ footer {
 }
 
 .player-name {
+
+    margin-left: auto;
     color: white;
     text-decoration: none;
-    text-align: center;
     font-weight: bold;
     margin-bottom: 20px;
     border: 1px solid red;
@@ -68,12 +70,13 @@ footer {
 }
 
 .player-stats {
-
+    margin-right: auto;
+    margin-left: auto;
     color: black;
     background-image: linear-gradient(rgba(255, 255, 255, 0.466), rgba(255, 255, 255, 0.63)), url("./IMG/basketball.avif");
     border: 3px dotted orangered;
     border-radius: 9px;
-    width: 400px;
+    width: 100%;
     padding: 5px;
     font-weight: bold;
     margin-top: 10px;
