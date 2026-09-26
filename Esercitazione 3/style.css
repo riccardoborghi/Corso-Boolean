@@ -3,6 +3,7 @@
     box-sizing: border-box;
     margin: 0;
     padding: 0;
+    text-decoration: none;
 }
 
 /* Stili generali del corpo pagina */
@@ -40,6 +41,7 @@ footer {
 
 /* Carta giocatore */
 .player-card {
+
     color: white;
     background-color: rgba(10, 11, 59, 0.6);
     border: 2px solid red;
@@ -55,8 +57,8 @@ footer {
 }
 
 .player-name {
-
-    margin-left: auto;
+    margin-left: 10%;
+    margin-right: auto;
     color: white;
     text-decoration: none;
     font-weight: bold;
@@ -72,18 +74,18 @@ footer {
 .player-stats {
     margin-right: auto;
     margin-left: auto;
-    color: black;
+    color: blue;
     background-image: linear-gradient(rgba(255, 255, 255, 0.466), rgba(255, 255, 255, 0.63)), url("./IMG/basketball.avif");
-    border: 3px dotted orangered;
+    background-size: cover;
+    border: 3px dotted orange;
     border-radius: 9px;
-    width: 100%;
+    width: 250px;
     padding: 5px;
     font-weight: bold;
     margin-top: 10px;
     margin-bottom: 5px;
     display: flex;
     align-items: center;
-
 }
 
 .card-title {
@@ -94,7 +96,6 @@ footer {
 }
 
 .profilepic {
-    alt: "foto profilo";
     height: 80px;
     border-color: rgb(255, 217, 0);
     border-width: 1px;
