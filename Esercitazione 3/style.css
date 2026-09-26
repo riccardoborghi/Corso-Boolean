@@ -23,7 +23,7 @@ h1 {
     font-size: 30px;
     padding-bottom: 10px;
     padding-top: 5px;
-    border-bottom: red solid 2px;
+    border-bottom: red solid 6px;
     border-bottom-left-radius: 20px;
     border-bottom-right-radius: 20px;
 }
@@ -32,11 +32,14 @@ footer {
     border-top-left-radius: 20px;
     border-top-right-radius: 20px;
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-    background-color: red;
+    background-color: white;
+    padding-top: 10px;
+    padding-bottom: 10px;
     text-align: center;
     margin-top: 40px;
     font-size: 22px;
-    color: white;
+    color: rgb(12, 12, 134);
+    border-top: red solid 6px;
 }
 
 /* Carta giocatore */
@@ -78,13 +81,15 @@ footer {
     background-image: linear-gradient(rgba(255, 255, 255, 0.466), rgba(255, 255, 255, 0.63)), url("./IMG/basketball.avif");
     background-size: cover;
     border: 3px dotted orange;
-    border-radius: 9px;
+    border-radius: 100%;
     width: 250px;
+    height: 150px;
     padding: 5px;
     font-weight: bold;
     margin-top: 10px;
     margin-bottom: 5px;
     display: flex;
+    justify-content: center;
     align-items: center;
 }
 
