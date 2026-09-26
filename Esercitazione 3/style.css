@@ -72,6 +72,12 @@ footer {
 
 .player-banner {
     display: flex;
+    align-items: center;
+    border-color: rgb(255, 217, 0);
+    border-width: 1px;
+    border-style: dashed;
+    border-right: none;
+    border-left: none;
 }
 
 .player-name {
@@ -79,12 +85,14 @@ footer {
     background-color: white;
     font-weight: bold;
     border: 1px solid rgb(201, 8, 42);
-    max-height: 20px;
     margin-left: auto;
     margin-right: auto;
+
 }
 
 .player-description {
+    margin-top: 5px;
+    margin-bottom: 5px;
     color: white;
 }
 
@@ -107,10 +115,6 @@ footer {
 }
 
 .profilepic {
-    display: flex;
     height: 80px;
-    border-color: rgb(255, 217, 0);
-    border-width: 1px;
-    border-style: dashed;
     background-color: rgba(255, 255, 255, 0.4);
 }
