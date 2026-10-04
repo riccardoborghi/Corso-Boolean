@@ -1,3 +1,20 @@
+/*  BONUS - LARGE MOBILE (sopra i 576px) */
+
+/* I bottoni social si allagano già su dispositivi mobile più grandetti (576px) */
+.social-networks button {
+    flex-basis: 20%;
+}
+
+/* l'immagine nella descrizione della ricetta viene circondata dal testo anche su mobile ma solo se c'è spazio sufficiente, quindi a partire da 576px */
+
+@media screen and (min-width: 576px) {
+    .presentation img {
+        float: left;
+        margin: 10px;
+        margin-left: 0;
+    }
+}
+
 /* TABLET (sopra i 768px) */
 
 @media screen and (min-width:768px) {
@@ -55,8 +72,9 @@
 
     /* - l'immagine nella descrizione della ricetta viene circondata dal testo */
     .presentation img {
-        display: inline;
-        margin-bottom: 0px;
+        float: left;
+        margin: 10px;
+        margin-left: 0;
     }
 }
 
