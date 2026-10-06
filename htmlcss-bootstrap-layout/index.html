@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="it">
+
+<!-- 
+🏋️ ESERCIZIO
+Repo:  htmlcss-bootstrap-layout
+Riprodurre un layout con griglia responsive utilizzando Bootstrap 5! Aiutatevi con gli screenshot in allegato e le classi di Bootstrap per riprodurre il giusto layout a seconda dello spazio a disposizione sui diversi dispositivi.
+
+CONSIGLI
+Mobile-first: sviluppate prima tutta la versione mobile e quando è completo aggiungere le classi per gli altri breakpoint
+Non usate l'IA, l'obiettivo è imparare a muoversi in una documentazione!
+Ricordate container > row > column
+Non alterate i margini su container, row e column. Se necessario usate invece un div (intorno alla row, o dentro alla column) per assegnargli i margini e altro.
+Il padding è meno problematico, ma nel dubbio potete usare lo stesso principio dei margin.
+
+🎁 BONUS
+Esercitarsi sulla centralizzazione, usando le classi di bootstrap:
+E’ possibile definire in qualche punto il fatto che il testo sia bianco senza ripeterlo per ogni elemento?
+E’ possibile semplificare il layout delle colonne di qualche riga utilizzando la classe row-cols? -->
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>La mia pagina</title>
+
+    <!-- CSS di Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+
+<body>
+    <h1 class="text-center font-weight-bold">Bootstrap 5 Responsive Grid </h1>
+    <p class="text-center font-weight-light">Layout a griglia con diversi breakpoint (sm,md,lg)</h2>
+
+    <div class="row py-2">
+        <div class="col-12">
+            <div class="row">
+                <div class="col-12 col-md-6 col-lg-4 bg-light">Colonna 1</div>
+                <div class="col-12 col-md-6 col-lg-8 bg-secondary">Colonna 2</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row py-2">
+        <div class="col-12">
+            <div class="row">
+                <div class="col-6 col-md-4 col-lg-4 bg-primary">Colonna 1</div>
+                <div class="col-6 col-md-4 col-lg-4 bg-success">Colonna 2</div>
+                <div class="col-12 col-md-4 col-lg-4 bg-danger">Colonna 3</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row py-2">
+        <div class="col-12">
+            <div class="row">
+                <div class="col-6 col-md-3 col-lg-3 bg-info">Colonna 1</div>
+                <div class="col-6 col-md-3 col-lg-3 bg-warning">Colonna 2</div>
+                <div class="col-6 col-md-3 col-lg-3 bg-dark">Colonna 3</div>
+                <div class="col-6 col-md-3 col-lg-3 bg-light">Colonna 4</div>
+            </div>
+        </div>
+    </div>
+    <!-- JS di Bootstrap (con Popper) -->
+    <!--     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script> -->
+</body>
+
+</html>

@@ -1,0 +1,1520 @@
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bootstrap — Dispensa Didattica</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700&family=Inter:wght@400;600;700&family=JetBrains+Mono:wght@400;500&display=swap"
+        rel="stylesheet">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <style>
+        *,
+        *::before,
+        *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            font-size: 16px;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: #f0f0f3;
+            color: #333;
+            line-height: 1.7;
+            padding-bottom: 100px;
+        }
+
+        .nav-fissa {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: #1a1a2e;
+            color: #fff;
+            padding: 10px 24px;
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+            gap: 8px 14px;
+            flex-wrap: wrap;
+            font-size: 0.8rem;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .nav-fissa a {
+            color: #ccc;
+            text-decoration: none;
+            padding: 4px 10px;
+            border-radius: 4px;
+            transition: background 0.2s, color 0.2s;
+        }
+
+        .nav-fissa a:hover {
+            background: rgba(255, 255, 255, 0.12);
+            color: #fff;
+        }
+
+        .nav-fissa .logo {
+            font-weight: 700;
+            font-size: 1.05rem;
+            margin-right: 8px;
+            font-family: 'Merriweather', serif;
+            color: #fff;
+        }
+
+        .container-main {
+            max-width: 960px;
+            margin: 0 auto;
+            padding: 75px 18px 40px;
+        }
+
+        .main-header {
+            text-align: center;
+            padding: 40px 20px 30px;
+            margin-bottom: 30px;
+        }
+
+        .main-header h1 {
+            font-family: 'Merriweather', serif;
+            font-size: 2.4rem;
+            color: #1a1a2e;
+            margin-bottom: 8px;
+        }
+
+        .main-header p {
+            font-size: 1.1rem;
+            color: #777;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        section {
+            background: #fff;
+            border-radius: 12px;
+            padding: 30px 28px;
+            margin-bottom: 30px;
+            box-shadow: 0 1px 6px rgba(0, 0, 0, 0.06);
+            border: 1px solid #e2e2e2;
+        }
+
+        section h2 {
+            font-family: 'Merriweather', serif;
+            font-size: 1.55rem;
+            color: #1a1a2e;
+            margin-bottom: 6px;
+            padding-bottom: 10px;
+            border-bottom: 3px solid #e0e0e0;
+        }
+
+        section h2 .num {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 34px;
+            height: 34px;
+            background: #6f42c1;
+            color: #fff;
+            border-radius: 50%;
+            font-size: 0.95rem;
+            font-family: 'Inter', sans-serif;
+            font-weight: 700;
+            margin-right: 10px;
+        }
+
+        section h3 {
+            font-size: 1.1rem;
+            color: #444;
+            margin: 22px 0 8px;
+            padding-left: 10px;
+            border-left: 3px solid #6f42c1;
+        }
+
+        section p {
+            margin-bottom: 10px;
+        }
+
+        .spiegazione {
+            background: #f4f1ff;
+            border-left: 4px solid #6f42c1;
+            padding: 12px 16px;
+            margin: 10px 0 18px;
+            border-radius: 0 8px 8px 0;
+            font-size: 0.93rem;
+        }
+
+        .spiegazione code {
+            background: #e4e0f0;
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.88em;
+            color: #6f42c1;
+        }
+
+        .demo-box {
+            border: 2px dashed #d4d4d4;
+            border-radius: 8px;
+            padding: 18px;
+            margin: 14px 0;
+            background: #fafafa;
+        }
+
+        .demo-label {
+            font-size: 0.8rem;
+            color: #888;
+            margin-top: 8px;
+            padding: 4px 8px;
+            background: #f0f0f0;
+            border-radius: 4px;
+            display: inline-block;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 12px 0;
+            font-size: 0.88rem;
+        }
+
+        table th,
+        table td {
+            padding: 9px 12px;
+            text-align: left;
+            border-bottom: 1px solid #e0e0e0;
+        }
+
+        table th {
+            background: #1a1a2e;
+            color: #fff;
+            font-weight: 600;
+        }
+
+        table tr:nth-child(even) {
+            background: #f8f8fa;
+        }
+
+        table code {
+            background: #eee;
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.88em;
+            color: #c0392b;
+        }
+
+        .badge-bs {
+            display: inline-block;
+            padding: 3px 10px;
+            border-radius: 12px;
+            font-size: 0.7rem;
+            font-family: 'JetBrains Mono', monospace;
+            font-weight: 500;
+            vertical-align: middle;
+        }
+
+        .badge-xs {
+            background: #ffc107;
+            color: #333;
+        }
+
+        .badge-sm {
+            background: #fd7e14;
+            color: #fff;
+        }
+
+        .badge-md {
+            background: #20c997;
+            color: #fff;
+        }
+
+        .badge-lg {
+            background: #0d6efd;
+            color: #fff;
+        }
+
+        .badge-xl {
+            background: #6f42c1;
+            color: #fff;
+        }
+
+        .badge-xxl {
+            background: #6c757d;
+            color: #fff;
+        }
+
+        .codice-esempio {
+            background: #1e1e2e;
+            color: #cdd6f4;
+            padding: 16px 18px;
+            border-radius: 8px;
+            margin: 12px 0;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.82rem;
+            line-height: 1.9;
+            overflow-x: auto;
+            white-space: pre;
+            display: block;
+        }
+
+        .codice-esempio .tag {
+            color: #89b4fa;
+        }
+
+        .codice-esempio .attr {
+            color: #f9e2af;
+        }
+
+        .codice-esempio .val {
+            color: #a6e3a1;
+        }
+
+        .codice-esempio .commento {
+            color: #6c7086;
+            font-style: italic;
+        }
+
+        .esercizio {
+            background: #fff8e1;
+            border: 2px solid #ffd54f;
+            border-radius: 10px;
+            padding: 18px 20px;
+            margin: 20px 0 10px;
+        }
+
+        .esercizio h4 {
+            font-size: 1rem;
+            color: #856404;
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .esercizio p {
+            font-size: 0.92rem;
+            margin-bottom: 10px;
+        }
+
+        .esercizio .soluzione {
+            display: none;
+            background: #fff;
+            border: 1px solid #e0d5b0;
+            border-radius: 8px;
+            padding: 14px 16px;
+            margin-top: 10px;
+        }
+
+        .esercizio .soluzione.open {
+            display: block;
+        }
+
+        .esercizio .soluzione code {
+            background: #f4f1ff;
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.88em;
+            color: #6f42c1;
+        }
+
+        .esercizio .soluzione p {
+            margin-bottom: 6px;
+            font-size: 0.9rem;
+        }
+
+        .esercizio .soluzione strong {
+            color: #856404;
+        }
+
+        .btn-soluzione {
+            background: #ffd54f;
+            color: #856404;
+            border: none;
+            padding: 8px 18px;
+            border-radius: 6px;
+            font-weight: 600;
+            font-size: 0.85rem;
+            cursor: pointer;
+            transition: background 0.2s;
+            font-family: 'Inter', sans-serif;
+        }
+
+        .btn-soluzione:hover {
+            background: #ffca28;
+        }
+
+        .bs-cell {
+            padding: 14px;
+            border-radius: 6px;
+            font-weight: 600;
+            font-size: 0.85rem;
+            text-align: center;
+            color: #fff;
+            background: #6f42c1;
+            min-height: 45px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .bs-cell-alt {
+            background: #0d6efd;
+        }
+
+        .bs-cell-green {
+            background: #198754;
+        }
+
+        .bs-cell-orange {
+            background: #fd7e14;
+        }
+
+        .bs-cell-pink {
+            background: #d63384;
+        }
+
+        .bs-cell-dark {
+            background: #1a1a2e;
+        }
+
+        .bs-cell-teal {
+            background: #20c997;
+        }
+
+        .gap-demo-box {
+            border: 2px solid #333;
+            background: #ddd;
+            min-height: 50px;
+            display: flex;
+        }
+
+        .gap-demo-box .gap-item {
+            background: #6f42c1;
+            color: #fff;
+            padding: 10px 16px;
+            font-weight: 600;
+            font-size: 0.8rem;
+            border: 2px solid #5a35a0;
+            border-radius: 4px;
+        }
+
+        @media (max-width: 768px) {
+            .main-header h1 {
+                font-size: 1.8rem;
+            }
+
+            section {
+                padding: 22px 18px;
+            }
+
+            .nav-fissa {
+                gap: 6px 10px;
+                padding: 8px 14px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <nav class="nav-fissa">
+        <span class="logo">Bootstrap</span>
+        <a href="#cdn">CDN</a>
+        <a href="#grid">Grid</a>
+        <a href="#breakpoints">Breakpoint</a>
+        <a href="#utility">Utility</a>
+        <a href="#componenti">Componenti</a>
+    </nav>
+
+    <div class="container-main">
+
+        <header class="main-header">
+            <h1>Bootstrap</h1>
+            <p>Dispensa didattica: importazione CDN, Grid System, Breakpoint, Utility Class e Componenti</p>
+        </header>
+
+
+        <!-- ==========================================
+         1. CDN
+         ========================================== -->
+        <section id="cdn">
+            <h2><span class="num">1</span> Importare Bootstrap via CDN</h2>
+
+            <div class="spiegazione">
+                Un <strong>CDN</strong> (Content Delivery Network) è un server remoto che ospita i file.
+                Invece di scaricarli, li linki nell'HTML.
+                <br>Servono <strong>due link</strong>: CSS nell'<code>&lt;head&gt;</code>, JS prima di
+                <code>&lt;/body&gt;</code>.
+            </div>
+
+            <h3>Struttura HTML completa</h3>
+            <div class="codice-esempio"><span class="tag">&lt;!DOCTYPE html&gt;</span>
+<span class="tag">&lt;html</span> <span class="attr">lang=</span><span class="val">"it"</span><span
+    class="tag">&gt;</span>
+<span class="tag">&lt;head&gt;</span>
+    <span class="tag">&lt;meta</span> <span class="attr">charset=</span><span
+        class="val">"UTF-8"</span><span class="tag">&gt;</span>
+    <span class="tag">&lt;meta</span> <span class="attr">name=</span><span class="val">"viewport"</span><span class="attr">content=</span><span class="val">"width=device-width, initial-scale=1.0"</span><span
+        class="tag">&gt;</span>
+    <span class="tag">&lt;title&gt;</span>La mia pagina<span class="tag">&lt;/title&gt;</span>
+
+    <span class="commento">&lt;!-- CSS di Bootstrap --&gt;</span>
+    <span class="tag">&lt;link</span> <span class="attr">href=</span><span
+        class="val">"https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"</span>
+    <span class="attr">rel=</span><span class="val">"stylesheet"</span><span class="tag">&gt;</span>
+<span class="tag">&lt;/head&gt;</span>
+<span class="tag">&lt;body&gt;</span>
+
+    <span class="tag">&lt;h1&gt;</span>Ciao Bootstrap!<span class="tag">&lt;/h1&gt;</span>
+
+    <span class="commento">&lt;!-- JS di Bootstrap (con Popper) --&gt;</span>
+    <span class="tag">&lt;script</span> <span class="attr">src=</span><span
+        class="val">"https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"</span><span
+        class="tag">&gt;&lt;/script&gt;</span>
+<span class="tag">&lt;/body&gt;</span>
+<span class="tag">&lt;/html&gt;</span>
+            </div>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>File</th>
+                        <th>A cosa serve</th>
+                        <th>Obbligatorio?</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><code>bootstrap.min.css</code></td>
+                        <td>Stili: griglia, utility, componenti visivi</td>
+                        <td>✅ Sempre</td>
+                    </tr>
+                    <tr>
+                        <td><code>bootstrap.bundle.min.js</code></td>
+                        <td>Interattività: modal, dropdown, accordion, navbar</td>
+                        <td>⚠️ Solo per componenti interattivi</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <div class="esercizio">
+                <h4>✏️ Mini Esercizio</h4>
+                <p>Un collega usa classi come <code>btn btn-primary</code> e <code>container</code> ma gli stili non si
+                    vedono. Cosa manca?</p>
+                <button class="btn-soluzione" onclick="toggleSol(this)">Mostra soluzione</button>
+                <div class="soluzione">
+                    <p><strong>Manca il link al CSS nell'<code>&lt;head&gt;</code>.</strong></p>
+                    <p><code>&lt;link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"&gt;</code>
+                    </p>
+                </div>
+            </div>
+        </section>
+
+
+        <!-- ==========================================
+         2. GRID SYSTEM
+         ========================================== -->
+        <section id="grid">
+            <h2><span class="num">2</span> Grid System</h2>
+
+            <div class="spiegazione">
+                La griglia di Bootstrap è basata su <strong>Flexbox</strong> e ha <strong>12 colonne</strong>.
+                <br>Tre elementi fondamentali:
+                <br><code>.container</code> (o <code>.container-fluid</code>) → contenitore
+                <br><code>.row</code> → riga
+                <br><code>.col</code> (o varianti) → colonna
+            </div>
+
+            <h3>Struttura base</h3>
+            <div class="codice-esempio"><span class="tag">&lt;div</span> <span class="attr">class=</span><span
+    class="val">"container"</span><span class="tag">&gt;</span>
+    <span class="tag">&lt;div</span> <span class="attr">class=</span><span class="val">"row"</span><span
+        class="tag">&gt;</span>
+        <span class="tag">&lt;div</span> <span class="attr">class=</span><span class="val">"col-4"</span><span
+            class="tag">&gt;</span>Colonna 4/12<span class="tag">&lt;/div&gt;</span>
+        <span class="tag">&lt;div</span> <span class="attr">class=</span><span class="val">"col-4"</span><span
+            class="tag">&gt;</span>Colonna 4/12<span class="tag">&lt;/div&gt;</span>
+        <span class="tag">&lt;div</span> <span class="attr">class=</span><span class="val">"col-4"</span><span
+            class="tag">&gt;</span>Colonna 4/12<span class="tag">&lt;/div&gt;</span>
+    <span class="tag">&lt;/div&gt;</span>
+<span class="tag">&lt;/div&gt;</span>
+            </div>
+
+            <h3>.col — Colonne uguali (auto)</h3>
+            <div class="spiegazione">
+                <code>.col</code> senza numero crea colonne di <strong>larghezza uguale</strong>.
+                Bootstrap divide automaticamente le 12 colonne tra tutti gli elementi <code>.col</code>.
+            </div>
+            <div class="demo-box">
+                <div class="container-fluid">
+                    <div class="row g-2">
+                        <div class="col">
+                            <div class="bs-cell">.col (1/3)</div>
+                        </div>
+                        <div class="col">
+                            <div class="bs-cell bs-cell-alt">.col (1/3)</div>
+                        </div>
+                        <div class="col">
+                            <div class="bs-cell bs-cell-green">.col (1/3)</div>
+                        </div>
+                    </div>
+                </div>
+                <span class="demo-label">3 elementi <code>.col</code> → 12 ÷ 3 = 4 colonne ciascuno</span>
+            </div>
+
+            <h3>.col-auto — Larghezza in base al contenuto</h3>
+            <div class="spiegazione">
+                <code>.col-auto</code> fa sì che la colonna sia <strong>larga quanto il suo contenuto</strong>.
+                Le altre colonne <code>.col</code> occupano lo spazio restante.
+            </div>
+            <div class="demo-box">
+                <div class="container-fluid">
+                    <div class="row g-2 align-items-center">
+                        <div class="col-auto">
+                            <div class="bs-cell">📷</div>
+                        </div>
+                        <div class="col">
+                            <div class="bs-cell bs-cell-alt">.col → occupa tutto lo spazio restante</div>
+                        </div>
+                        <div class="col-auto">
+                            <div class="bs-cell bs-cell-green">⭐</div>
+                        </div>
+                    </div>
+                </div>
+                <span class="demo-label"><code>.col-auto</code> = largo quanto il contenuto (icona). <code>.col</code> =
+                    riempie il resto.</span>
+            </div>
+
+            <h3>.col-N — Larghezza esplicita</h3>
+            <div class="demo-box">
+                <div class="container-fluid">
+                    <div class="row g-2">
+                        <div class="col-3">
+                            <div class="bs-cell">col-3</div>
+                        </div>
+                        <div class="col-6">
+                            <div class="bs-cell bs-cell-alt">col-6 (metà)</div>
+                        </div>
+                        <div class="col-3">
+                            <div class="bs-cell bs-cell-green">col-3</div>
+                        </div>
+                    </div>
+                </div>
+                <span class="demo-label">3 + 6 + 3 = 12. Ogni numero va da 1 a 12.</span>
+            </div>
+
+            <h3>Container vs Container-fluid</h3>
+            <div class="demo-box">
+                <p class="mb-2"><strong>.container</strong> → larghezza massima fissata per ogni breakpoint, centrato:
+                </p>
+                <div class="container border border-2 border-primary rounded p-2 mb-3">
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="bs-cell">.container</div>
+                        </div>
+                    </div>
+                </div>
+                <p class="mb-2"><strong>.container-fluid</strong> → sempre 100% della larghezza:</p>
+                <div class="container-fluid border border-2 border-success rounded p-2">
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="bs-cell bs-cell-green">.container-fluid</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <h3>Nidificazione (nesting)</h3>
+            <div class="codice-esempio">
+<span class="tag">&lt;div</span> <span class="attr">class=</span><span class="val">"row"</span><span class="tag">&gt;</span>
+    <span class="tag">&lt;div</span> <span class="attr">class=</span><span class="val">"col-8"</span><span
+        class="tag">&gt;</span>
+        Principale
+        <span class="tag">&lt;div</span> <span class="attr">class=</span><span class="val">"row"</span><span
+            class="tag">&gt;</span> <span class="commento">&lt;!-- row DENTRO una col --&gt;</span>
+            <span class="tag">&lt;div</span> <span class="attr">class=</span><span class="val">"col-6"</span><span
+            class="tag">&gt;</span>Sotto 1<span class="tag">&lt;/div&gt;</span>
+            <span class="tag">&lt;div</span> <span class="attr">class=</span><span class="val">"col-6"</span><span
+            class="tag">&gt;</span>Sotto 2<span class="tag">&lt;/div&gt;</span>
+        <span class="tag">&lt;/div&gt;</span>
+    <span class="tag">&lt;/div&gt;</span>
+    <span class="tag">&lt;div</span> <span class="attr">class=</span><span class="val">"col-4"</span><span
+        class="tag">&gt;</span>Sidebar<span class="tag">&lt;/div&gt;</span>
+<span class="tag">&lt;/div&gt;</span>
+</div>
+
+            <div class="esercizio">
+                <h4>✏️ Mini Esercizio</h4>
+                <p>Crea una riga con: colonna sinistra <strong>2/12</strong>, colonna centrale <strong>8/12</strong>,
+                    colonna destra <strong>2/12</strong>. Usa container-fluid e gap 3.</p>
+                <button class="btn-soluzione" onclick="toggleSol(this)">Mostra soluzione</button>
+                <div class="soluzione">
+                    <div class="codice-esempio"><span class="tag">&lt;div</span> <span class="attr">class=</span><span
+                            class="val">"container-fluid"</span><span class="tag">&gt;</span>
+                        <span class="tag">&lt;div</span> <span class="attr">class=</span><span class="val">"row
+                            g-3"</span><span class="tag">&gt;</span>
+                        <span class="tag">&lt;div</span> <span class="attr">class=</span><span
+                            class="val">"col-2"</span><span class="tag">&gt;</span>SX<span
+                            class="tag">&lt;/div&gt;</span>
+                        <span class="tag">&lt;div</span> <span class="attr">class=</span><span
+                            class="val">"col-8"</span><span class="tag">&gt;</span>Centrale<span
+                            class="tag">&lt;/div&gt;</span>
+                        <span class="tag">&lt;div</span> <span class="attr">class=</span><span
+                            class="val">"col-2"</span><span class="tag">&gt;</span>DX<span
+                            class="tag">&lt;/div&gt;</span>
+                        <span class="tag">&lt;/div&gt;</span>
+                        <span class="tag">&lt;/div&gt;</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+        <!-- ==========================================
+         3. BREAKPOINT
+         ========================================== -->
+        <section id="breakpoints">
+            <h2><span class="num">3</span> Breakpoint</h2>
+
+            <div class="spiegazione">
+                Bootstrap ha <strong>6 breakpoint</strong>. Si usano come <strong>prefisso</strong> nelle classi per
+                applicare stili solo da quella larghezza in su.
+                <br>L'approccio è <strong>mobile-first</strong>: <code>col-md-6</code> significa "da 768px in su occupa
+                6 colonne; sotto torna a larghezza piena".
+            </div>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>Breakpoint</th>
+                        <th>Prefisso</th>
+                        <th>Min-width</th>
+                        <th>Dispositivo tipico</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><span class="badge-bs badge-xs">Extra small</span></td>
+                        <td><em>nessuno</em></td>
+                        <td>&lt; 576px</td>
+                        <td>Smartphone</td>
+                    </tr>
+                    <tr>
+                        <td><span class="badge-bs badge-sm">Small</span></td>
+                        <td><code>sm-</code></td>
+                        <td>≥ 576px</td>
+                        <td>Smartphone grande</td>
+                    </tr>
+                    <tr>
+                        <td><span class="badge-bs badge-md">Medium</span></td>
+                        <td><code>md-</code></td>
+                        <td>≥ 768px</td>
+                        <td>Tablet</td>
+                    </tr>
+                    <tr>
+                        <td><span class="badge-bs badge-lg">Large</span></td>
+                        <td><code>lg-</code></td>
+                        <td>≥ 992px</td>
+                        <td>Laptop</td>
+                    </tr>
+                    <tr>
+                        <td><span class="badge-bs badge-xl">Extra large</span></td>
+                        <td><code>xl-</code></td>
+                        <td>≥ 1200px</td>
+                        <td>Desktop</td>
+                    </tr>
+                    <tr>
+                        <td><span class="badge-bs badge-xxl">XXL</span></td>
+                        <td><code>xxl-</code></td>
+                        <td>≥ 1400px</td>
+                        <td>Monitor grande</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h3>Esempio pratico: card responsive</h3>
+            <div class="demo-box">
+                <div class="row g-2">
+                    <div class="col-12 col-md-6 col-lg-4">
+                        <div class="bs-cell">col-12 → col-md-6 → col-lg-4</div>
+                    </div>
+                    <div class="col-12 col-md-6 col-lg-4">
+                        <div class="bs-cell bs-cell-alt">col-12 → col-md-6 → col-lg-4</div>
+                    </div>
+                    <div class="col-12 col-md-6 col-lg-4">
+                        <div class="bs-cell bs-cell-green">col-12 → col-md-6 → col-lg-4</div>
+                    </div>
+                    <div class="col-12 col-md-6 col-lg-4">
+                        <div class="bs-cell bs-cell-orange">col-12 → col-md-6 → col-lg-4</div>
+                    </div>
+                    <div class="col-12 col-md-6 col-lg-4">
+                        <div class="bs-cell bs-cell-pink">col-12 → col-md-6 → col-lg-4</div>
+                    </div>
+                    <div class="col-12 col-md-6 col-lg-4">
+                        <div class="bs-cell bs-cell-teal">col-12 → col-md-6 → col-lg-4</div>
+                    </div>
+                </div>
+                <div class="demo-label mt-2">
+                    <strong>&lt; 768px</strong> (<code>col-12</code>): 1 colonna<br>
+                    <strong>≥ 768px</strong> (<code>col-md-6</code>): 2 colonne<br>
+                    <strong>≥ 992px</strong> (<code>col-lg-4</code>): 3 colonne<br>
+                    <em>Ridimensiona la finestra!</em>
+                </div>
+            </div>
+
+            <h3>Utility con breakpoint</h3>
+            <div class="codice-esempio"><span class="commento">&lt;!-- Testo: centrato su mobile, a sinistra da md--&gt;</span>
+<span class="tag">&lt;p</span> <span class="attr">class=</span><span class="val">"text-center text-md-start"</span><span class="tag">&gt;</span>Paragrafo<span class="tag">&lt;/p&gt;</span>
+
+<span class="commento">&lt;!-- Padding: piccolo su mobile, grande da lg --&gt;</span>
+<span class="tag">&lt;div</span> <span class="attr">class=</span><span class="val">"p-2 p-lg-5"</span><span class="tag">&gt;</span>Contenuto<span class="tag">&lt;/div&gt;</span>
+
+<span class="commento">&lt;!-- Nascosto su mobile, visibile da lg in su --&gt;</span>
+<span class="tag">&lt;div</span> <span class="attr">class=</span><span class="val">"d-none d-lg-block"</span><span class="tag">&gt;</span>Sidebar<span class="tag">&lt;/div&gt;</span>
+            </div>
+
+            <div class="esercizio">
+                <h4>✏️ Mini Esercizio</h4>
+                <p>Griglia di card: 1 per riga su mobile (&lt;768px), 2 su tablet (≥768px), 4 su desktop (≥992px).</p>
+                <button class="btn-soluzione" onclick="toggleSol(this)">Mostra soluzione</button>
+                <div class="soluzione">
+                    <div class="codice-esempio"><span class="tag">&lt;div</span> <span class="attr">class=</span><span
+                            class="val">"container"</span><span class="tag">&gt;</span>
+                        <span class="tag">&lt;div</span> <span class="attr">class=</span><span class="val">"row
+                            g-4"</span><span class="tag">&gt;</span>
+                        <span class="tag">&lt;div</span> <span class="attr">class=</span><span class="val">"col-12
+                            col-md-6 col-lg-3"</span><span class="tag">&gt;</span>Card 1<span
+                            class="tag">&lt;/div&gt;</span>
+                        <span class="tag">&lt;div</span> <span class="attr">class=</span><span class="val">"col-12
+                            col-md-6 col-lg-3"</span><span class="tag">&gt;</span>Card 2<span
+                            class="tag">&lt;/div&gt;</span>
+                        <span class="tag">&lt;div</span> <span class="attr">class=</span><span class="val">"col-12
+                            col-md-6 col-lg-3"</span><span class="tag">&gt;</span>Card 3<span
+                            class="tag">&lt;/div&gt;</span>
+                        <span class="tag">&lt;div</span> <span class="attr">class=</span><span class="val">"col-12
+                            col-md-6 col-lg-3"</span><span class="tag">&gt;</span>Card 4<span
+                            class="tag">&lt;/div&gt;</span>
+                        <span class="tag">&lt;/div&gt;</span>
+                        <span class="tag">&lt;/div&gt;</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+        <!-- ==========================================
+         4. UTILITY CLASS
+         ========================================== -->
+        <section id="utility">
+            <h2><span class="num">4</span> Utility Class</h2>
+
+            <div class="spiegazione">
+                Classi CSS predefinite per applicare stili rapidamente <strong>senza scrivere CSS
+                    personalizzato</strong>.
+            </div>
+
+            <h3>Spacing: Margin e Padding</h3>
+            <div class="spiegazione">
+                Formato: <code>{m|p}{lati}-{valore}</code>
+                <br><br>
+                <strong>Lettera:</strong> <code>m</code> = margin · <code>p</code> = padding<br>
+                <strong>Lato:</strong> <code>t</code>=top · <code>b</code>=bottom · <code>s</code>=start (sx) ·
+                <code>e</code>=end (dx) · <code>x</code>=orizzontale · <code>y</code>=verticale<br>
+                <strong>Valore:</strong> 0 → 5 (oppure <code>auto</code> per margin)
+            </div>
+            <div class="demo-box">
+                <div class="bs-cell d-inline-block bg-primary text-white p-2 mb-2">p-2</div>
+                <div class="bs-cell d-inline-block bg-primary text-white p-3 mb-2">p-3</div>
+                <div class="bs-cell d-inline-block bg-primary text-white p-4 mb-2">p-4</div>
+                <div class="bs-cell d-inline-block bg-primary text-white p-5">p-5</div>
+                <p class="demo-label mt-2">Il padding aumenta da 0.5rem (p-2) a 3rem (p-5)</p>
+                <hr>
+                <div class="bs-cell d-inline-block bg-success text-white me-4 p-2">me-4 (margin a destra)</div>
+                <div class="bs-cell d-inline-block bg-success text-white ms-4 p-2">ms-4 (margin a sinistra)</div>
+                <p class="demo-label mt-2"><code>me-4</code> = margin-end 1.5rem · <code>ms-4</code> = margin-start
+                    1.5rem</p>
+            </div>
+
+            <h3>Colori di sfondo e testo</h3>
+            <div class="demo-box">
+                <div class="row g-2">
+                    <div class="col">
+                        <div class="p-3 bg-primary text-white rounded text-center text-uppercase fw-bold"
+                            style="font-size:0.75rem;">bg-primary</div>
+                    </div>
+                    <div class="col">
+                        <div class="p-3 bg-secondary text-white rounded text-center text-uppercase fw-bold"
+                            style="font-size:0.75rem;">bg-secondary</div>
+                    </div>
+                    <div class="col">
+                        <div class="p-3 bg-success text-white rounded text-center text-uppercase fw-bold"
+                            style="font-size:0.75rem;">bg-success</div>
+                    </div>
+                    <div class="col">
+                        <div class="p-3 bg-danger text-white rounded text-center text-uppercase fw-bold"
+                            style="font-size:0.75rem;">bg-danger</div>
+                    </div>
+                    <div class="col">
+                        <div class="p-3 bg-warning text-dark rounded text-center text-uppercase fw-bold"
+                            style="font-size:0.75rem;">bg-warning</div>
+                    </div>
+                    <div class="col">
+                        <div class="p-3 bg-info text-dark rounded text-center text-uppercase fw-bold"
+                            style="font-size:0.75rem;">bg-info</div>
+                    </div>
+                </div>
+                <div class="row g-2 mt-2">
+                    <div class="col-4">
+                        <div class="p-3 bg-light text-dark rounded text-center border" style="font-size:0.75rem;">
+                            bg-light</div>
+                    </div>
+                    <div class="col-4">
+                        <div class="p-3 bg-dark text-white rounded text-center" style="font-size:0.75rem;">bg-dark</div>
+                    </div>
+                    <div class="col-4">
+                        <div class="p-3 bg-white text-dark rounded text-center border" style="font-size:0.75rem;">
+                            bg-white</div>
+                    </div>
+                </div>
+                <hr>
+                <p class="text-primary">text-primary</p>
+                <p class="text-success fw-bold">text-success fw-bold</p>
+                <p class="text-danger fst-italic">text-danger fst-italic</p>
+                <p class="text-muted">text-muted (testo secondario grigio)</p>
+            </div>
+
+            <h3>Sizing (dimensioni)</h3>
+            <div class="demo-box">
+                <p class="mb-2"><strong>Larghezza:</strong></p>
+                <div class="w-25 bg-primary text-white text-center p-1 mb-1 rounded">w-25 (25%)</div>
+                <div class="w-50 bg-primary text-white text-center p-1 mb-1 rounded">w-50 (50%)</div>
+                <div class="w-75 bg-primary text-white text-center p-1 mb-1 rounded">w-75 (75%)</div>
+                <div class="w-100 bg-primary text-white text-center p-1 rounded">w-100 (100%)</div>
+                <hr>
+                <p class="mb-2"><strong>Altezza:</strong></p>
+                <div class="d-flex gap-2 align-items-end"
+                    style="height: 100px; background: #f0f0f0; padding: 8px; border-radius: 6px;">
+                    <div class="h-25 bg-success text-white text-center rounded" style="width: 60px;">h-25</div>
+                    <div class="h-50 bg-success text-white text-center rounded" style="width: 60px;">h-50</div>
+                    <div class="h-75 bg-success text-white text-center rounded" style="width: 60px;">h-75</div>
+                    <div class="h-100 bg-success text-white text-center rounded" style="width: 60px;">h-100</div>
+                </div>
+            </div>
+
+            <h3>Flexbox</h3>
+            <div class="spiegazione">
+                Le utility flex trasformano un elemento in un flex container e ne controllano il comportamento.
+            </div>
+
+            <p class="mb-2"><strong>Attivare flex:</strong> <code>d-flex</code> (oppure <code>d-inline-flex</code>)</p>
+            <div class="demo-box">
+                <div class="d-flex gap-2 mb-3">
+                    <div class="bs-cell">1</div>
+                    <div class="bs-cell bs-cell-alt">2</div>
+                    <div class="bs-cell bs-cell-green">3</div>
+                </div>
+                <span class="demo-label"><code>d-flex</code> → gli elementi si dispongono in riga</span>
+            </div>
+
+            <p class="mb-2"><strong>Direzione:</strong> <code>flex-row</code> (default) · <code>flex-column</code></p>
+            <div class="demo-box">
+                <p class="mb-1"><code>flex-row</code> (default):</p>
+                <div class="d-flex flex-row gap-2 mb-3">
+                    <div class="bs-cell" style="min-width:60px;">1</div>
+                    <div class="bs-cell" style="min-width:60px;">2</div>
+                    <div class="bs-cell" style="min-width:60px;">3</div>
+                </div>
+                <p class="mb-1"><code>flex-column</code>:</p>
+                <div class="d-flex flex-column gap-2" style="max-width: 150px;">
+                    <div class="bs-cell">1</div>
+                    <div class="bs-cell">2</div>
+                    <div class="bs-cell">3</div>
+                </div>
+            </div>
+
+            <p class="mb-2 mt-3"><strong>Allineamento asse principale:</strong> <code>justify-content-*</code></p>
+            <div class="demo-box">
+                <p class="mb-1"><code>justify-content-start</code> (default):</p>
+                <div class="d-flex justify-content-start gap-2 mb-2 border p-2">
+                    <div class="bs-cell" style="min-width:50px;">1</div>
+                    <div class="bs-cell" style="min-width:50px;">2</div>
+                </div>
+                <p class="mb-1"><code>justify-content-center</code>:</p>
+                <div class="d-flex justify-content-center gap-2 mb-2 border p-2">
+                    <div class="bs-cell" style="min-width:50px;">1</div>
+                    <div class="bs-cell" style="min-width:50px;">2</div>
+                </div>
+                <p class="mb-1"><code>justify-content-end</code>:</p>
+                <div class="d-flex justify-content-end gap-2 mb-2 border p-2">
+                    <div class="bs-cell" style="min-width:50px;">1</div>
+                    <div class="bs-cell" style="min-width:50px;">2</div>
+                </div>
+                <p class="mb-1"><code>justify-content-between</code>:</p>
+                <div class="d-flex justify-content-between gap-2 mb-2 border p-2">
+                    <div class="bs-cell" style="min-width:50px;">Start</div>
+                    <div class="bs-cell" style="min-width:50px;">End</div>
+                </div>
+            </div>
+
+            <p class="mb-2 mt-3"><strong>Allineamento asse trasversale:</strong> <code>align-items-*</code></p>
+            <div class="demo-box">
+                <p class="mb-1"><code>align-items-start</code>:</p>
+                <div class="d-flex align-items-start gap-2 mb-2 border p-2" style="height:80px;">
+                    <div class="bs-cell" style="min-width:50px; padding:4px;">Corto</div>
+                    <div class="bs-cell" style="min-width:50px; padding:16px;">Lungo</div>
+                </div>
+                <p class="mb-1"><code>align-items-center</code>:</p>
+                <div class="d-flex align-items-center gap-2 mb-2 border p-2" style="height:80px;">
+                    <div class="bs-cell" style="min-width:50px; padding:4px;">Corto</div>
+                    <div class="bs-cell" style="min-width:50px; padding:16px;">Lungo</div>
+                </div>
+                <p class="mb-1"><code>align-items-end</code>:</p>
+                <div class="d-flex align-items-end gap-2 mb-2 border p-2" style="height:80px;">
+                    <div class="bs-cell" style="min-width:50px; padding:4px;">Corto</div>
+                    <div class="bs-cell" style="min-width:50px; padding:16px;">Lungo</div>
+                </div>
+                <p class="mb-1"><code>align-items-stretch</code> (default):</p>
+                <div class="d-flex align-items-stretch gap-2 border p-2" style="height:80px;">
+                    <div class="bs-cell" style="min-width:50px;">1</div>
+                    <div class="bs-cell" style="min-width:50px;">2</div>
+                </div>
+            </div>
+
+            <h3>Utility con breakpoint</h3>
+            <div class="spiegazione">
+                Quasi tutte le utility accettano un <strong>prefisso breakpoint</strong>:
+                <code>{breakpoint}:{utility}</code>.
+                <br>La regola si applica <strong>solo da quel breakpoint in su</strong>.
+            </div>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>Classe</th>
+                        <th>Effetto</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><code>d-none d-md-block</code></td>
+                        <td>Nascosto su mobile, visibile da tablet (≥768px) in su</td>
+                    </tr>
+                    <tr>
+                        <td><code>d-block d-lg-none</code></td>
+                        <td>Visibile su mobile e tablet, nascosto da desktop (≥992px)</td>
+                    </tr>
+                    <tr>
+                        <td><code>text-center text-md-start</code></td>
+                        <td>Testo centrato su mobile, allineato a sinistra da tablet</td>
+                    </tr>
+                    <tr>
+                        <td><code>p-2 p-lg-4</code></td>
+                        <td>Padding piccolo su mobile, grande da desktop</td>
+                    </tr>
+                    <tr>
+                        <td><code>flex-column flex-md-row</code></td>
+                        <td>Colonna su mobile, riga da tablet in su</td>
+                    </tr>
+                    <tr>
+                        <td><code>w-100 w-md-50</code></td>
+                        <td>Larghezza piena su mobile, metà su tablet+</td>
+                    </tr>
+                    <tr>
+                        <td><code>bg-light bg-dark text-white</code></td>
+                        <td>Non responsive: vale sempre</td>
+                    </tr>
+                    <tr>
+                        <td><code>justify-content-center justify-content-lg-between</code></td>
+                        <td>Centrato su mobile, space-between da desktop</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <div class="demo-box">
+                <p class="mb-2"><strong>Esempio: <code>d-none d-md-block</code></strong></p>
+                <div class="d-none d-md-block bg-info text-dark p-2 rounded">
+                    Questo elemento è <strong>nascosto su mobile</strong> e appare solo da <strong>768px</strong> in su.
+                </div>
+                <div class="d-md-none bg-warning text-dark p-2 rounded">
+                    Questo è visibile <strong>solo su mobile</strong> (&lt;768px) e scompare da tablet in su.
+                </div>
+                <span class="demo-label mt-2">Ridimensiona la finestra per vedere gli elementi
+                    apparire/scomparire!</span>
+            </div>
+
+            <div class="esercizio">
+                <h4>✏️ Mini Esercizio</h4>
+                <p>Crea un box con utility class Bootstrap:</p>
+                <ul style="margin-left: 18px; font-size: 0.92rem;">
+                    <li>Sfondo verde (success), testo bianco, padding 4, margin-bottom 3</li>
+                    <li>Testo centrato, grassetto, bordi arrotondati, ombra</li>
+                    <li>Larghezza 75% su mobile → 50% da tablet in su</li>
+                </ul>
+                <button class="btn-soluzione" onclick="toggleSol(this)">Mostra soluzione</button>
+                <div class="soluzione">
+                    <div class="codice-esempio"><span class="tag">&lt;div</span> <span class="attr">class=</span><span
+                            class="val">"bg-success text-white p-4 mb-3 text-center fw-bold rounded shadow w-75
+                            w-md-50"</span><span class="tag">&gt;</span>
+                        Il mio box con utility class
+                        <span class="tag">&lt;/div&gt;</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+        <!-- ==========================================
+         5. COMPONENTI
+         ========================================== -->
+        <section id="componenti">
+            <h2><span class="num">5</span> Componenti</h2>
+
+            <div class="spiegazione">
+                Componenti pronti all'uso. Per quelli interattivi (modal, dropdown, accordion) serve il file JS.
+            </div>
+
+            <h3>Navbar</h3>
+            <div class="demo-box">
+                <nav class="navbar navbar-expand-lg navbar-dark bg-dark rounded">
+                    <div class="container-fluid">
+                        <a class="navbar-brand" href="#">🏠 MioSito</a>
+                        <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#demoNav">
+                            <span class="navbar-toggler-icon"></span>
+                        </button>
+                        <div class="collapse navbar-collapse" id="demoNav">
+                            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                                <li class="nav-item"><a class="nav-link active" href="#">Home</a></li>
+                                <li class="nav-item"><a class="nav-link" href="#">Chi siamo</a></li>
+                                <li class="nav-item"><a class="nav-link" href="#">Servizi</a></li>
+                                <li class="nav-item"><a class="nav-link" href="#">Contatti</a></li>
+                            </ul>
+                            <form class="d-flex"><input class="form-control me-2" type="search"
+                                    placeholder="Cerca..."><button class="btn btn-outline-light"
+                                    type="submit">Cerca</button></form>
+                        </div>
+                    </div>
+                </nav>
+                <span class="demo-label mt-2"><code>navbar-expand-lg</code> → menu hamburger sotto 992px. Clicca ☰ per
+                    testare!</span>
+            </div>
+
+            <h3>Bottoni</h3>
+            <div class="demo-box">
+                <div class="d-flex flex-wrap gap-2">
+                    <button class="btn btn-primary">Primary</button>
+                    <button class="btn btn-secondary">Secondary</button>
+                    <button class="btn btn-success">Success</button>
+                    <button class="btn btn-danger">Danger</button>
+                    <button class="btn btn-warning">Warning</button>
+                    <button class="btn btn-info">Info</button>
+                    <button class="btn btn-dark">Dark</button>
+                    <button class="btn btn-link">Link</button>
+                </div>
+                <hr>
+                <div class="d-flex flex-wrap gap-2">
+                    <button class="btn btn-outline-primary">Outline Primary</button>
+                    <button class="btn btn-outline-danger">Outline Danger</button>
+                    <button class="btn btn-outline-success">Outline Success</button>
+                </div>
+                <hr>
+                <div class="d-flex flex-wrap gap-2 align-items-center">
+                    <button class="btn btn-primary btn-sm">btn-sm</button>
+                    <button class="btn btn-primary">Default</button>
+                    <button class="btn btn-primary btn-lg">btn-lg</button>
+                </div>
+            </div>
+
+            <h3>Card</h3>
+            <div class="demo-box">
+                <div class="row g-3">
+                    <div class="col-12 col-md-4">
+                        <div class="card h-100">
+                            <div class="card-header bg-primary text-white">Header</div>
+                            <div class="card-body">
+                                <h5 class="card-title">Titolo Card</h5>
+                                <p class="card-text">Esempio di card con header, body e footer.</p>
+                                <a href="#" class="btn btn-primary">Vai</a>
+                            </div>
+                            <div class="card-footer text-muted">Aggiornato: oggi</div>
+                        </div>
+                    </div>
+                    <div class="col-12 col-md-4">
+                        <div class="card h-100 border-success">
+                            <div class="card-body text-center">
+                                <div class="display-4 mb-2">📊</div>
+                                <h5 class="card-title">Dashboard</h5>
+                                <p class="card-text text-muted">Card con icona e centratura.</p>
+                                <button class="btn btn-outline-success btn-sm">Dettagli</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12 col-md-4">
+                        <div class="card h-100 text-bg-dark">
+                            <div class="card-body">
+                                <h5 class="card-title">Card scura</h5>
+                                <p class="card-text"><code>text-bg-dark</code> → sfondo scuro, testo chiaro automatico.
+                                </p>
+                                <a href="#" class="btn btn-light btn-sm">Scopri</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <h3>Alert</h3>
+            <div class="demo-box">
+                <div class="alert alert-primary">Alert primario</div>
+                <div class="alert alert-success d-flex align-items-center">
+                    <span class="me-2">✅</span>
+                    <div>Operazione completata!</div>
+                </div>
+                <div class="alert alert-danger alert-dismissible fade show">
+                    <strong>Errore!</strong> Qualcosa è andato storto.
+                    <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+                </div>
+            </div>
+
+            <h3>Accordion</h3>
+            <div class="demo-box">
+                <div class="accordion" id="demoAccordion">
+                    <div class="accordion-item">
+                        <h2 class="accordion-header"><button class="accordion-button" type="button"
+                                data-bs-toggle="collapse" data-bs-target="#collapseOne">Cos'è Bootstrap?</button></h2>
+                        <div id="collapseOne" class="accordion-collapse collapse show" data-bs-parent="#demoAccordion">
+                            <div class="accordion-body">Framework CSS open-source per creare siti responsive
+                                rapidamente.</div>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <h2 class="accordion-header"><button class="accordion-button collapsed" type="button"
+                                data-bs-toggle="collapse" data-bs-target="#collapseTwo">Serve JavaScript?</button></h2>
+                        <div id="collapseTwo" class="accordion-collapse collapse" data-bs-parent="#demoAccordion">
+                            <div class="accordion-body">Solo per componenti interattivi: accordion, modal, dropdown,
+                                tooltip.</div>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <h2 class="accordion-header"><button class="accordion-button collapsed" type="button"
+                                data-bs-toggle="collapse" data-bs-target="#collapseThree">È responsive?</button></h2>
+                        <div id="collapseThree" class="accordion-collapse collapse" data-bs-parent="#demoAccordion">
+                            <div class="accordion-body">Sì! Bootstrap è mobile-first. Tutto si adatta automaticamente.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <h3>Modal</h3>
+            <div class="demo-box">
+                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#demoModal">Apri
+                    Modal</button>
+                <div class="modal fade" id="demoModal" tabindex="-1">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title">Esempio Modal</h5><button type="button" class="btn-close"
+                                    data-bs-dismiss="modal"></button>
+                            </div>
+                            <div class="modal-body">
+                                <p>Modal Bootstrap: si apre col bottone e si chiude con ✕ o cliccando fuori.</p>
+                            </div>
+                            <div class="modal-footer"><button type="button" class="btn btn-secondary"
+                                    data-bs-dismiss="modal">Chiudi</button><button type="button"
+                                    class="btn btn-primary">Salva</button></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <h3>Form</h3>
+            <div class="demo-box">
+                <form>
+                    <div class="mb-3">
+                        <label class="form-label">Email</label>
+                        <input type="email" class="form-control" placeholder="nome@esempio.it">
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Password</label>
+                        <input type="password" class="form-control" placeholder="Password">
+                    </div>
+                    <div class="mb-3 form-check">
+                        <input type="checkbox" class="form-check-input" id="demoCheck">
+                        <label class="form-check-label" for="demoCheck">Ricordami</label>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Accedi</button>
+                </form>
+            </div>
+
+            <h3>Riepilogo componenti</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Componente</th>
+                        <th>Classe principale</th>
+                        <th>JS richiesto?</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Navbar</td>
+                        <td><code>.navbar</code></td>
+                        <td>✅ (per il toggle mobile)</td>
+                    </tr>
+                    <tr>
+                        <td>Card</td>
+                        <td><code>.card</code></td>
+                        <td>❌</td>
+                    </tr>
+                    <tr>
+                        <td>Bottoni</td>
+                        <td><code>.btn</code></td>
+                        <td>❌</td>
+                    </tr>
+                    <tr>
+                        <td>Alert</td>
+                        <td><code>.alert</code></td>
+                        <td>⚠️ (per il dismiss)</td>
+                    </tr>
+                    <tr>
+                        <td>Badge</td>
+                        <td><code>.badge</code></td>
+                        <td>❌</td>
+                    </tr>
+                    <tr>
+                        <td>Accordion</td>
+                        <td><code>.accordion</code></td>
+                        <td>✅</td>
+                    </tr>
+                    <tr>
+                        <td>Modal</td>
+                        <td><code>.modal</code></td>
+                        <td>✅</td>
+                    </tr>
+                    <tr>
+                        <td>Progress</td>
+                        <td><code>.progress</code></td>
+                        <td>❌</td>
+                    </tr>
+                    <tr>
+                        <td>Form</td>
+                        <td><code>.form-control</code></td>
+                        <td>❌</td>
+                    </tr>
+                    <tr>
+                        <td>Carousel</td>
+                        <td><code>.carousel</code></td>
+                        <td>✅</td>
+                    </tr>
+                    <tr>
+                        <td>Tooltip</td>
+                        <td><code>data-bs-toggle="tooltip"</code></td>
+                        <td>✅</td>
+                    </tr>
+                    <tr>
+                        <td>Dropdown</td>
+                        <td><code>.dropdown</code></td>
+                        <td>✅</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <div class="esercizio">
+                <h4>✏️ Mini Esercizio</h4>
+                <p>Crea una card prodotto con Bootstrap:</p>
+                <ul style="margin-left: 18px; font-size: 0.92rem;">
+                    <li>Bordo ombreggiato (shadow), immagine placeholder in alto</li>
+                    <li>Titolo "Smartphone XYZ", prezzo €299 in grassetto verde</li>
+                    <li>Descrizione: "Ultimo modello con fotocamera da 108MP"</li>
+                    <li>Bottone "Acquista ora" (primary, larghezza piena)</li>
+                    <li>Badge "NUOVO" in alto a destra</li>
+                </ul>
+                <button class="btn-soluzione" onclick="toggleSol(this)">Mostra soluzione</button>
+                <div class="soluzione">
+                    <div class="codice-esempio"><span class="tag">&lt;div</span> <span class="attr">class=</span><span
+                            class="val">"card shadow"</span> <span class="attr">style=</span><span
+                            class="val">"max-width:350px"</span><span class="tag">&gt;</span>
+                        <span class="tag">&lt;div</span> <span class="attr">class=</span><span
+                            class="val">"position-relative"</span><span class="tag">&gt;</span>
+                        <span class="tag">&lt;img</span> <span class="attr">src=</span><span
+                            class="val">"https://picsum.photos/350/200"</span>
+                        <span class="attr">class=</span><span class="val">"card-img-top"</span> <span
+                            class="attr">alt=</span><span class="val">"Prodotto"</span><span class="tag">&gt;</span>
+                        <span class="tag">&lt;span</span> <span class="attr">class=</span><span class="val">"badge
+                            bg-danger position-absolute top-0 end-0 m-2"</span><span class="tag">&gt;</span>
+                        NUOVO
+                        <span class="tag">&lt;/span&gt;</span>
+                        <span class="tag">&lt;/div&gt;</span>
+                        <span class="tag">&lt;div</span> <span class="attr">class=</span><span
+                            class="val">"card-body"</span><span class="tag">&gt;</span>
+                        <span class="tag">&lt;h5</span> <span class="attr">class=</span><span
+                            class="val">"card-title"</span><span class="tag">&gt;</span>Smartphone XYZ<span
+                            class="tag">&lt;/h5&gt;</span>
+                        <span class="tag">&lt;p</span> <span class="attr">class=</span><span
+                            class="val">"card-text"</span><span class="tag">&gt;</span>Ultimo modello con fotocamera da
+                        108MP<span class="tag">&lt;/p&gt;</span>
+                        <span class="tag">&lt;p</span> <span class="attr">class=</span><span class="val">"fw-bold
+                            text-success fs-5"</span><span class="tag">&gt;</span>€299<span
+                            class="tag">&lt;/p&gt;</span>
+                        <span class="tag">&lt;a</span> <span class="attr">href=</span><span class="val">"#"</span> <span
+                            class="attr">class=</span><span class="val">"btn btn-primary w-100"</span><span
+                            class="tag">&gt;</span>Acquista ora<span class="tag">&lt;/a&gt;</span>
+                        <span class="tag">&lt;/div&gt;</span>
+                        <span class="tag">&lt;/div&gt;</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="esercizio">
+                <h4>✏️ Mini Esercizio Finale</h4>
+                <p>Struttura una landing page con Bootstrap:</p>
+                <ul style="margin-left: 18px; font-size: 0.92rem;">
+                    <li>Navbar: logo a sinistra, 3 link a destra</li>
+                    <li>Hero: titolo centrato, sottotitolo, bottone CTA</li>
+                    <li>Sezione servizi: 3 card in riga (responsive: 1 col su mobile, 3 su desktop)</li>
+                    <li>Footer scuro, testo centrato</li>
+                </ul>
+                <button class="btn-soluzione" onclick="toggleSol(this)">Mostra soluzione</button>
+                <div class="soluzione">
+                    <div class="codice-esempio"><span class="commento">&lt;!-- NAVBAR --&gt;</span>
+                        <span class="tag">&lt;nav</span> <span class="attr">class=</span><span class="val">"navbar
+                            navbar-expand-lg navbar-dark bg-dark"</span><span class="tag">&gt;</span>
+                        <span class="tag">&lt;div</span> <span class="attr">class=</span><span
+                            class="val">"container"</span><span class="tag">&gt;</span>
+                        <span class="tag">&lt;a</span> <span class="attr">class=</span><span
+                            class="val">"navbar-brand"</span> <span class="attr">href=</span><span
+                            class="val">"#"</span><span class="tag">&gt;</span>🏠 MioSito<span
+                            class="tag">&lt;/a&gt;</span>
+                        <span class="tag">&lt;button</span> <span class="attr">class=</span><span
+                            class="val">"navbar-toggler"</span> <span class="attr">data-bs-toggle=</span><span
+                            class="val">"collapse"</span> <span class="attr">data-bs-target=</span><span
+                            class="val">"#nav"</span><span class="tag">&gt;</span>
+                        <span class="tag">&lt;span</span> <span class="attr">class=</span><span
+                            class="val">"navbar-toggler-icon"</span><span class="tag">&gt;&lt;/span&gt;</span>
+                        <span class="tag">&lt;/button&gt;</span>
+                        <span class="tag">&lt;div</span> <span class="attr">class=</span><span class="val">"collapse
+                            navbar-collapse"</span> <span class="attr">id=</span><span class="val">"nav"</span><span
+                            class="tag">&gt;</span>
+                        <span class="tag">&lt;ul</span> <span class="attr">class=</span><span class="val">"navbar-nav
+                            ms-auto"</span><span class="tag">&gt;</span>
+                        <span class="tag">&lt;li</span> <span class="attr">class=</span><span
+                            class="val">"nav-item"</span><span class="tag">&gt;&lt;a</span> <span
+                            class="attr">class=</span><span class="val">"nav-link"</span> <span
+                            class="attr">href=</span><span class="val">"#"</span><span class="tag">&gt;</span>Home<span
+                            class="tag">&lt;/a&gt;&lt;/li&gt;</span>
+                        <span class="tag">&lt;li</span> <span class="attr">class=</span><span
+                            class="val">"nav-item"</span><span class="tag">&gt;&lt;a</span> <span
+                            class="attr">class=</span><span class="val">"nav-link"</span> <span
+                            class="attr">href=</span><span class="val">"#"</span><span
+                            class="tag">&gt;</span>Servizi<span class="tag">&lt;/a&gt;&lt;/li&gt;</span>
+                        <span class="tag">&lt;li</span> <span class="attr">class=</span><span
+                            class="val">"nav-item"</span><span class="tag">&gt;&lt;a</span> <span
+                            class="attr">class=</span><span class="val">"nav-link"</span> <span
+                            class="attr">href=</span><span class="val">"#"</span><span
+                            class="tag">&gt;</span>Contatti<span class="tag">&lt;/a&gt;&lt;/li&gt;</span>
+                        <span class="tag">&lt;/ul&gt;</span>
+                        <span class="tag">&lt;/div&gt;</span>
+                        <span class="tag">&lt;/div&gt;</span>
+                        <span class="tag">&lt;/nav&gt;</span>
+
+                        <span class="commento">&lt;!-- HERO --&gt;</span>
+                        <span class="tag">&lt;section</span> <span class="attr">class=</span><span class="val">"bg-light
+                            py-5 text-center"</span><span class="tag">&gt;</span>
+                        <span class="tag">&lt;div</span> <span class="attr">class=</span><span
+                            class="val">"container"</span><span class="tag">&gt;</span>
+                        <span class="tag">&lt;h1</span> <span class="attr">class=</span><span class="val">"display-4
+                            fw-bold"</span><span class="tag">&gt;</span>Benvenuto<span class="tag">&lt;/h1&gt;</span>
+                        <span class="tag">&lt;p</span> <span class="attr">class=</span><span class="val">"lead
+                            text-muted mb-4"</span><span class="tag">&gt;</span>Scopri i nostri servizi<span
+                            class="tag">&lt;/p&gt;</span>
+                        <span class="tag">&lt;a</span> <span class="attr">href=</span><span class="val">"#"</span> <span
+                            class="attr">class=</span><span class="val">"btn btn-primary btn-lg"</span><span
+                            class="tag">&gt;</span>Inizia ora<span class="tag">&lt;/a&gt;</span>
+                        <span class="tag">&lt;/div&gt;</span>
+                        <span class="tag">&lt;/section&gt;</span>
+
+                        <span class="commento">&lt;!-- SERVIZI --&gt;</span>
+                        <span class="tag">&lt;section</span> <span class="attr">class=</span><span
+                            class="val">"py-5"</span><span class="tag">&gt;</span>
+                        <span class="tag">&lt;div</span> <span class="attr">class=</span><span
+                            class="val">"container"</span><span class="tag">&gt;</span>
+                        <span class="tag">&lt;div</span> <span class="attr">class=</span><span class="val">"row
+                            g-4"</span><span class="tag">&gt;</span>
+                        <span class="tag">&lt;div</span> <span class="attr">class=</span><span class="val">"col-12
+                            col-lg-4"</span><span class="tag">&gt;</span>
+                        <span class="tag">&lt;div</span> <span class="attr">class=</span><span class="val">"card h-100
+                            shadow-sm"</span><span class="tag">&gt;</span>
+                        <span class="tag">&lt;div</span> <span class="attr">class=</span><span
+                            class="val">"card-body"</span><span class="tag">&gt;</span>
+                        <span class="tag">&lt;h5&gt;</span>🎨 Design<span class="tag">&lt;/h5&gt;</span>
+                        <span class="tag">&lt;p&gt;</span>Interfacce moderne<span class="tag">&lt;/p&gt;</span>
+                        <span class="tag">&lt;/div&gt;</span>
+                        <span class="tag">&lt;/div&gt;</span>
+                        <span class="tag">&lt;/div&gt;</span>
+                        <span class="tag">&lt;div</span> <span class="attr">class=</span><span class="val">"col-12
+                            col-lg-4"</span><span class="tag">&gt;</span>
+                        <span class="tag">&lt;div</span> <span class="attr">class=</span><span class="val">"card h-100
+                            shadow-sm"</span><span class="tag">&gt;</span>
+                        <span class="tag">&lt;div</span> <span class="attr">class=</span><span
+                            class="val">"card-body"</span><span class="tag">&gt;</span>
+                        <span class="tag">&lt;h5&gt;</span>⚡ Performance<span class="tag">&lt;/h5&gt;</span>
+                        <span class="tag">&lt;p&gt;</span>Velocità garantita<span class="tag">&lt;/p&gt;</span>
+                        <span class="tag">&lt;/div&gt;</span>
+                        <span class="tag">&lt;/div&gt;</span>
+                        <span class="tag">&lt;/div&gt;</span>
+                        <span class="tag">&lt;div</span> <span class="attr">class=</span><span class="val">"col-12
+                            col-lg-4"</span><span class="tag">&gt;</span>
+                        <span class="tag">&lt;div</span> <span class="attr">class=</span><span class="val">"card h-100
+                            shadow-sm"</span><span class="tag">&gt;</span>
+                        <span class="tag">&lt;div</span> <span class="attr">class=</span><span
+                            class="val">"card-body"</span><span class="tag">&gt;</span>
+                        <span class="tag">&lt;h5&gt;</span>🔒 Sicurezza<span class="tag">&lt;/h5&gt;</span>
+                        <span class="tag">&lt;p&gt;</span>Protezione dati<span class="tag">&lt;/p&gt;</span>
+                        <span class="tag">&lt;/div&gt;</span>
+                        <span class="tag">&lt;/div&gt;</span>
+                        <span class="tag">&lt;/div&gt;</span>
+                        <span class="tag">&lt;/div&gt;</span>
+                        <span class="tag">&lt;/div&gt;</span>
+                        <span class="tag">&lt;/section&gt;</span>
+
+                        <span class="commento">&lt;!-- FOOTER --&gt;</span>
+                        <span class="tag">&lt;footer</span> <span class="attr">class=</span><span class="val">"bg-dark
+                            text-white text-center py-4"</span><span class="tag">&gt;</span>
+                        <span class="tag">&lt;div</span> <span class="attr">class=</span><span
+                            class="val">"container"</span><span class="tag">&gt;</span>
+                        <span class="tag">&lt;p</span> <span class="attr">class=</span><span
+                            class="val">"mb-0"</span><span class="tag">&gt;</span>&amp;copy; 2025 MioSito<span
+                            class="tag">&lt;/p&gt;</span>
+                        <span class="tag">&lt;/div&gt;</span>
+                        <span class="tag">&lt;/footer&gt;</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        function toggleSol(btn) {
+            const sol = btn.nextElementSibling;
+            sol.classList.toggle('open');
+            btn.textContent = sol.classList.contains('open') ? 'Nascondi soluzione' : 'Mostra soluzione';
+        }
+    </script>
+
+</body>
+
+</html>
