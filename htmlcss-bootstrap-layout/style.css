@@ -1,0 +1,16 @@
+.bg-primary,
+.bg-secondary,
+.bg-success,
+.bg-danger,
+.bg-info,
+.bg-dark {
+    --bs-bg-bus-text-color: #ffffff;
+    color: var(--bs-bg-bus-text-color) !important;
+}
+
+
+.bg-light,
+{
+--bs-bg-bus-text-color: #000000;
+color: var(--bs-bg-bus-text-color) !important;
+}
