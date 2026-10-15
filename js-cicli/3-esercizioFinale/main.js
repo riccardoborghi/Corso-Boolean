@@ -19,13 +19,14 @@ while (!indovinato) {
     if (guess < numeroSegreto) {
         console.log("Troppo basso");
     } else if (guess > numeroSegreto) {
-        console.log("Troppo alto")
+        console.log("Troppo alto");
     } else if (isNaN(guess)) {
-        console.log("Non è un numero!")
+        console.log("Non è un numero!");
     }
     if (guess === numeroSegreto) {
         indovinato = true;
     }
 }
 
-console.log(`Complimenti hai indovinato il numero segreto ${numeroSegreto} con ${tentativi} tentativi`)
+console.log(`Complimenti hai indovinato il numero segreto ${numeroSegreto} con ${tentativi} tentativi`);
+alert(`Complimenti hai indovinato il numero segreto ${numeroSegreto} con ${tentativi} tentativi`);
