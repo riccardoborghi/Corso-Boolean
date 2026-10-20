@@ -67,16 +67,16 @@ Stampate un risultato che riporti nome, prezzo base, tariffa/età applicati, pre
 const nuovoTitolo = "Esercizio calcolo prezzo biglietto";
 document.getElementById("titolo").innerHTML = nuovoTitolo;
 
-const form = document.querySelector('form');
+const compilaForm = document.getElementById('calcolaPreventivo');
 
-salva.addEventListener("click", (event) => {
+compilaForm.addEventListener("submit", (event) => {
     //leggo i valori
     event.preventDefault();
     const numeroKM = document.getElementById('inputKM').value;
     const fasciaEta = document.getElementById("fasceEta").value;
     //faccio i calcoli
     let prezzoBase = numeroKM * 0.21;
-    let msgBase = `Per percorrere ${numeroKM}KM devi pagare ${prezzoBase.toFixed(2)} €, con tariffa base`
+    let msgBase = `Per percorrere ${numeroKM}KM devi pagare ${prezzoBase.toFixed(2)} €, con tariffa base`;
 
     if (fasciaEta == 1) {
         msgBase = `Per percorrere ${numeroKM}KM devi pagare ${(prezzoBase * 0.8).toFixed(2)} €, con tariffa agevolata`;

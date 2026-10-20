@@ -10,14 +10,15 @@
 
 <body>
     <h1 id="titolo">Loading...</h1>
-    <form>
+    <form id="calcolaPreventivo">
         <input id="inputKM" type="text">
         <select name="fasceEta" id="fasceEta">
             <option value="1">Under 18</option>
-            <option value="2">18-60</option>
+            <option value="2" selected>18-60</option>
             <option value="3">Over 60</option>
         </select>
-        <button id="salva">Salva modifiche</button>
+
+        <button type="submit" id="salva">Salva modifiche</button>
     </form>
     <script src="main.js"></script>
     <div id="calcoloBiglietto">Il preventivo di viaggio comparirà qui</div>
