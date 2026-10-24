@@ -44,6 +44,10 @@ function avviaTimer() {
 		if (larghezzaCorrente >= 100) {
 			clearInterval(timer);
 			timer = null;
+			title.innerText = "Caricamento completato";
+			btnPlay.disabled = true;
+			btnStop.disabled = true;
+			btnReset.disabled = false;
 		} else {
 			// 10% ogni secondo per raggiungere il 100% in 10 secondi
 			larghezzaCorrente += 10;
@@ -73,7 +77,7 @@ function resettaTimer() {
 	btnReset.disabled = true;
 	larghezzaCorrente = 0;
 	progressBar.style.width = "0%";
-
+	title.innerText = "Loading...";
 }
 
 
