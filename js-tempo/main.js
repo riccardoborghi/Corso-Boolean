@@ -21,14 +21,12 @@ const btnReset = document.getElementById("reset-btn");
 
 //Gestisco gli eventi
 btnPlay.addEventListener("click", avviaTimer);
-
 btnStop.addEventListener("click", fermaTimer);
-
 btnReset.addEventListener("click", resettaTimer);
 
 
 let larghezzaCorrente = 0;
-let timer = null; // Variabile per memorizzare l'ID del setInterval
+let timer = null; // Variabile per memorizzare il valore di setInterval
 
 // FUNZIONE PER AVVIARE IL TIMER
 function avviaTimer() {
@@ -53,7 +51,7 @@ function avviaTimer() {
 			larghezzaCorrente += 10;
 			progressBar.style.width = larghezzaCorrente + "%";
 		}
-	}, 1000); // 1 secondo
+	}, 1000);
 }
 
 // FUNZIONE PER FERMARE (METTERE IN PAUSA) IL TIMER
