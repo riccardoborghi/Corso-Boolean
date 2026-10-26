@@ -1,4 +1,4 @@
-
+#TRACCIA
 #Dato un array di oggetti rappresentante un team di un’azienda, creare una pagina dedicata  in cui mostrare una card per ciascun componente.
 
 #Trovate l’array del team all’interno della cartella in allegato. L'array (come anche le immagini) va copiato nel vostro progetto.
@@ -9,7 +9,7 @@ Aggiungere un form di agginta membri che permetta di visualizzare il nuovo membr
 
 ******************************************************************
 
-#progretto: lavorare principalmente con bootstrap per il progetto, 
+#progetto: lavorare principalmente con bootstrap per il progetto, 
 usare la logica in javascript per creare dinamicamente le card,
 ad esempio con logica for-each per ogni membro dell'array ed estrapolare i dati utili.
 
