@@ -6,3 +6,17 @@
 #BONUS
 Rendere l’esercizio responsive, mandando a capo le card
 Aggiungere un form di agginta membri che permetta di visualizzare il nuovo membro sulla pagina (usate una foto qualunque, anche vostra se volete sentirvi parte del team! 😀)
+
+******************************************************************
+
+#progretto: lavorare principalmente con bootstrap per il progetto, 
+usare la logica in javascript per creare dinamicamente le card,
+ad esempio con logica for-each per ogni membro dell'array ed estrapolare i dati utili.
+
+#fatto fino ad ora : struttura base html con bootstrap
+contati gli elementi dell'array con il metodo  Object.keys()
+
+
+#da fare: scrivere funzioni *ATOMICHE* per:
+- estrarre i membri dall'array
+- scrivere le stringhe per inserirle nell'html come nuove card
