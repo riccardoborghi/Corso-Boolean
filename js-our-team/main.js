@@ -1,6 +1,6 @@
 //inizializzazione
-const nuovoTitolo = "OGGETTI";
-document.getElementById("titolo").innerHTML = nuovoTitolo;
+const nuovoContenuto = "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Assumenda autem nesciunt eum aliquam natus quaerat ipsa, quibusdam laborum commodi ullam dolorum necessitatibus, praesentium sequi nihil nobis numquam accusantium iure fuga.";
+document.getElementById("contenuto").innerHTML = nuovoContenuto;
 
 
 const teamMembers = [
@@ -41,3 +41,10 @@ const teamMembers = [
         img: "img/female3.png"
     }
 ];
+// Legge quanti elementi contiene l'oggetto
+const totaleElementi = Object.keys(teamMembers).length;
+console.log(totaleElementi);
+
+// Seleziona il contenitore flex
+const container = document.getElementById('flex-container'); //da creare in html
+container.innerHTML = ''; // Pulisce eventuali elementi precedenti
