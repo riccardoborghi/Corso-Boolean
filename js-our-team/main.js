@@ -41,14 +41,14 @@ const teamMembers = [
         img: "img/female3.png"
     }
 ];
-// Legge quanti elementi contiene l'oggetto
+/* // Legge quanti elementi contiene l'oggetto
 const totaleElementi = Object.keys(teamMembers).length;
-console.log(totaleElementi);
-
+console.log(totaleElementi); */
+/* 
 // Seleziona il contenitore flex
 const container = document.getElementById('flex-container'); //da creare in html
 //container.innerHTML = ''; // Pulisce eventuali elementi precedenti
-
+ */
 
 function renderTeam(teamMembers) {
     const teamCardsContainer = document.querySelector(".team-container");
@@ -63,11 +63,11 @@ function renderTeam(teamMembers) {
 function getMemberCard(member) {
 
     return `
-		<div class="team-card">
+		<div class="card">
 			<div class="card-image">
-				<img src="${member.image}" alt="${member.name}" />
+				<img src="assets/${member.img}" class="card-img-left" alt="${member.name}" />
 			</div>
-			<div class="card-text">
+			<div class="--bs-dark card-body">
 				<h3>${member.name}</h3>
 				<p>${member.role}</p>
 			</div>
