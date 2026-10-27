@@ -63,15 +63,23 @@ function renderTeam(teamMembers) {
 function getMemberCard(member) {
 
     return `
-		<div class="card">
-			<div class="card-image">
-				<img src="assets/${member.img}" class="card-img-left" alt="${member.name}" />
-			</div>
-			<div class="--bs-dark card-body">
-				<h3>${member.name}</h3>
-				<p>${member.role}</p>
-			</div>
-		</div>`;
+<div class="col-12 col-md-6 col-lg-4 mb-4">
+            <div class="card rounded-0 text-bg-dark border-0 h-100">
+                <div class="row g-0 align-items-center h-100">
+                    <div class="col-5">
+                        <img src="assets/${member.img}" class="img-fluid rounded-0" alt="${member.name}">
+                    </div>
+                    <div class="col-7">
+                        <div class="card-body">
+                            <h3 class="card-title fs-5">${member.name}</h3>
+                            <p class="card-text text-secondary">${member.role}</p>
+                                <a href="#" class="card-link">${member.email}</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    `;
 
 }
 
