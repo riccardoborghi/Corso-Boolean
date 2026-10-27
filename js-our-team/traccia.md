@@ -52,8 +52,8 @@ Il progetto è completo quando:
 - la pagina funziona anche su dispositivi piccoli
 - il bonus del form è implementato correttamente
 
-## Suggerimento di organizzazione
-Per rendere il codice più pulito, conviene creare funzioni come:
+## Organizzazione
+
 - `getMembers()`
 - `renderMemberCard(member)`
 - `renderTeam(members)`

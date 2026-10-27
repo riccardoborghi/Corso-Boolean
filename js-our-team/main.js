@@ -47,4 +47,34 @@ console.log(totaleElementi);
 
 // Seleziona il contenitore flex
 const container = document.getElementById('flex-container'); //da creare in html
-container.innerHTML = ''; // Pulisce eventuali elementi precedenti
+//container.innerHTML = ''; // Pulisce eventuali elementi precedenti
+
+
+function renderTeam(teamMembers) {
+    const teamCardsContainer = document.querySelector(".team-container");
+    let htmlDaScrivere = "";
+    for (const thisMember of teamMembers) {
+        htmlDaScrivere += getMemberCard(thisMember);
+    }
+    teamCardsContainer.innerHTML = htmlDaScrivere;
+}
+
+
+function getMemberCard(member) {
+
+    return `
+		<div class="team-card">
+			<div class="card-image">
+				<img src="${member.image}" alt="${member.name}" />
+			</div>
+			<div class="card-text">
+				<h3>${member.name}</h3>
+				<p>${member.role}</p>
+			</div>
+		</div>`;
+
+}
+
+
+// Renderizza cards
+renderTeam(teamMembers);
