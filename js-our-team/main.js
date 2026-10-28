@@ -62,7 +62,7 @@ function renderTeam(teamMembers) {
 
 
 function getMemberCard(member) {
-
+    //min-vh-175 di bootstrap non funziona?
     return `
 <div class="col-12 col-md-6 col-lg-4 mb-4">
             <div class="card rounded-0 border-0 text-bg-dark">
@@ -85,11 +85,11 @@ function getMemberCard(member) {
 }
 
 
-window.onload = function () {
+window.addEventListener('load', () => {
     const timerContainer = document.querySelector(".timer-container");
     let elapsed = new Date().getTime() - renderStart;
     timerContainer.innerHTML = `Pagina renderizzata in:  ${elapsed} ms`;
-}
+});
 
 // Renderizza cards
 renderTeam(teamMembers);
