@@ -42,17 +42,17 @@ const teamMembers = [
         img: "img/female3.png"
     }
 ];
+
 /* // Legge quanti elementi contiene l'oggetto
-const totaleElementi = Object.keys(teamMembers).length;
+const totaleElementi = teamMembers.length;
 console.log(totaleElementi); */
 /* 
 // Seleziona il contenitore flex
 const container = document.getElementById('flex-container'); //da creare in html
-//container.innerHTML = ''; // Pulisce eventuali elementi precedenti
  */
 
 function renderTeam(teamMembers) {
-    const teamCardsContainer = document.querySelector(".team-container");
+    const teamCardsContainer = document.querySelector("#team-container");
     let htmlDaScrivere = "";
     for (const thisMember of teamMembers) {
         htmlDaScrivere += getMemberCard(thisMember);
