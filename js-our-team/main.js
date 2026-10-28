@@ -1,6 +1,7 @@
 //inizializzazione
 const nuovoContenuto = "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Assumenda autem nesciunt eum aliquam natus quaerat ipsa, quibusdam laborum commodi ullam dolorum necessitatibus, praesentium sequi nihil nobis numquam accusantium iure fuga.";
 document.getElementById("contenuto").innerHTML = nuovoContenuto;
+let renderStart = new Date().getTime();
 
 
 const teamMembers = [
@@ -64,15 +65,15 @@ function getMemberCard(member) {
 
     return `
 <div class="col-12 col-md-6 col-lg-4 mb-4">
-            <div class="card rounded-0 text-bg-dark border-0 h-100">
-                <div class="row g-0 align-items-center h-100">
+            <div class="card rounded-0 border-0 text-bg-dark">
+                <div class="row g-0 align-items-center">
                     <div class="col-5">
                         <img src="assets/${member.img}" class="img-fluid rounded-0" alt="${member.name}">
                     </div>
                     <div class="col-7">
                         <div class="card-body">
-                            <h3 class="card-title fs-5">${member.name}</h3>
-                            <p class="card-text text-secondary">${member.role}</p>
+                            <h3 class="card-title text-uppercase fw-bold">${member.name}</h3>
+                            <p class="card-text">${member.role}</p>
                                 <a href="#" class="card-link">${member.email}</a>
                         </div>
                     </div>
@@ -84,5 +85,12 @@ function getMemberCard(member) {
 }
 
 
+window.onload = function () {
+    const timerContainer = document.querySelector(".timer-container");
+    let elapsed = new Date().getTime() - renderStart;
+    timerContainer.innerHTML = `Pagina renderizzata in:  ${elapsed} ms`;
+}
+
 // Renderizza cards
 renderTeam(teamMembers);
+

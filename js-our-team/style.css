@@ -1,4 +1,4 @@
-/* * {
+* {
     box-sizing: border-box;
     padding: 0;
     margin: 0;
@@ -7,10 +7,14 @@
 body {
     background-color: white;
     color: rgb(0, 0, 0);
-    font-family: comic sans-serif;
-    padding: 1rem;
-    font-size: 55%;
-} */
+    font-family: fredoka, sans-serif;
+}
+
+footer {
+    color: brown;
+    display: flex;
+    justify-content: end;
+}
 
 /* header {
     display: flex;

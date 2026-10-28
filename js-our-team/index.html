@@ -4,18 +4,22 @@
 <head lang="en">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <!-- CSS di Bootstrap -->
+    <!-- carichiamo CSS di Bootstrap -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Aggiunta font fredoka per ricalcare l'esempio-->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@600&display=swap" rel="stylesheet">
     <title>Document</title>
     <link rel="stylesheet" href="style.css" type="text/css" media="all" />
 </head>
 
 
 <body>
-    <header id="header" class="text-center fs-1 fw-bold text-danger p-md-3">Meet out team</header>
-    <h1 id="contenuto" class="text-center fs-5">Loading...</h1>
-    <div class="container my-5">
+    <header id="header" class="text-center fs-1 text-danger">Meet out team</header>
+    <!-- il testo non viene formattato (fw-normal ma rimane grassetto) -->
+    <h1 id="contenuto" class="text-center fw-normal fs-5">Loading...</h1>
+    <div class="container ">
         <!-- Qui andranno tutte le card generate via JS -->
         <div id="team-container" class="row team-container">
 
@@ -35,5 +39,8 @@
     </div>
     <script src="main.js"></script>
 </body>
+<footer class="timer-container">
+    <div>Rendered in:</div>
+</footer>
 
 </html>
