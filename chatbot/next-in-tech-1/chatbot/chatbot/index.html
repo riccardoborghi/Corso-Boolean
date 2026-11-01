@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>gIAda - AI Chat</title>
+    <!-- Font Inter & Icone Material -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap"
+        rel="stylesheet">
+    <!-- Foglio di stile CSS -->
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <div class="chat-app">
+        <!-- Intestazione superiore -->
+        <header class="chat-header">
+            <div class="bot-info">
+                <div class="avatar-wrapper">
+                    <img src="img/icon.png" alt="gIAda" class="avatar">
+                    <span class="online-dot"></span>
+                </div>
+                <div class="bot-text">
+                    <div class="bot-name-row">
+                        <span class="bot-name">gIAda</span>
+                        <span class="badge-ai">AI</span>
+                    </div>
+                    <div class="bot-status">
+                        <span class="status-dot"></span> Online &bull; Chat
+                    </div>
+                </div>
+            </div>
+
+            <div class="avatar-wrapper">
+                <img src="img/user.png" alt="Utente" class="avatar">
+            </div>
+        </header>
+
+        <!-- Finestra della conversazione -->
+        <main class="chat-body" id="chat-body">
+            <!-- I messaggi vengono generati dinamicamente da script.js -->
+        </main>
+
+        <!-- Barra di inserimento del messaggio -->
+        <footer class="chat-footer">
+            <form class="input-container" id="chat-form">
+                <input type="text" class="text-input" id="message-input" placeholder="Scrivi un messaggio a gIAda..." autocomplete="off">
+                <button type="submit" class="send-button" aria-label="Invia">
+                    <span class="material-symbols-outlined">send</span>
+                </button>
+            </form>
+        </footer>
+    </div>
+
+    <!-- File JavaScript dedicato -->
+    <script src="script.js"></script>
+</body>
+
+</html>

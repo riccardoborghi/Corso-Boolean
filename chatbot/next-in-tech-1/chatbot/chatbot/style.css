@@ -1,0 +1,270 @@
+/* Palette e variabili principali (da DESIGN.md) */
+:root {
+    --primary: #006948;
+    --primary-container: #00855d;
+    --badge-bg: #d1fae5;
+    --badge-text: #006948;
+    --bg-page: #f7f9fb;
+    --surface-white: #ffffff;
+    --bubble-user: #2d3133;
+    --text-user: #ffffff;
+    --text-main: #191c1e;
+    --text-muted: #64748b;
+    --input-bg: #eceef0;
+    --border-light: #e2e8f0;
+}
+
+/* Reset base semplice */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    background-color: var(--bg-page);
+    color: var(--text-main);
+    display: flex;
+    justify-content: center;
+    min-height: 100vh;
+}
+
+/* Contenitore principale dell'applicazione */
+.chat-app {
+    width: 100%;
+    max-width: 480px;
+    background-color: var(--bg-page);
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    position: relative;
+    border-left: 1px solid var(--border-light);
+    border-right: 1px solid var(--border-light);
+}
+
+/* Intestazione (Header) */
+.chat-header {
+    height: 64px;
+    background-color: var(--surface-white);
+    border-bottom: 1px solid var(--border-light);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 16px;
+    position: sticky;
+    top: 0;
+    z-index: 10;
+}
+
+.bot-info {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.bot-text {
+    display: flex;
+    flex-direction: column;
+}
+
+.bot-name-row {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.bot-name {
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--text-main);
+}
+
+.badge-ai {
+    background-color: var(--badge-bg);
+    color: var(--badge-text);
+    font-size: 11px;
+    font-weight: 700;
+    padding: 2px 7px;
+    border-radius: 9999px;
+    line-height: 1;
+}
+
+.bot-status {
+    font-size: 12px;
+    color: var(--text-muted);
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    margin-top: 2px;
+}
+
+.status-dot {
+    width: 7px;
+    height: 7px;
+    background-color: var(--primary);
+    border-radius: 50%;
+    display: inline-block;
+}
+
+/* Avatar generici */
+.avatar-wrapper {
+    position: relative;
+    width: 36px;
+    height: 36px;
+    flex-shrink: 0;
+}
+
+.avatar {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    object-fit: cover;
+    display: block;
+}
+
+.online-dot {
+    position: absolute;
+    bottom: -1px;
+    right: -1px;
+    width: 10px;
+    height: 10px;
+    background-color: var(--primary);
+    border: 2px solid var(--surface-white);
+    border-radius: 50%;
+}
+
+/* Area dei messaggi */
+.chat-body {
+    flex: 1;
+    padding: 24px 16px 100px 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+/* Singolo blocco messaggio */
+.message {
+    display: flex;
+    align-items: flex-end;
+    gap: 8px;
+    max-width: 88%;
+}
+
+/* Messaggio Utente (a destra) */
+.message-user {
+    align-self: flex-end;
+    flex-direction: row;
+}
+
+.message-user .message-content {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+}
+
+.message-user .bubble {
+    background-color: var(--bubble-user);
+    color: var(--text-user);
+    border-radius: 18px 18px 4px 18px;
+    padding: 14px 18px;
+    font-size: 15px;
+    line-height: 1.45;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+}
+
+/* Messaggio Bot (a sinistra) */
+.message-bot {
+    align-self: flex-start;
+    flex-direction: row;
+}
+
+.message-bot .message-content {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.message-bot .bubble {
+    background-color: var(--surface-white);
+    color: var(--text-main);
+    border-radius: 18px 18px 18px 4px;
+    border: 1px solid var(--border-light);
+    padding: 14px 18px;
+    font-size: 15px;
+    line-height: 1.45;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.04);
+}
+
+/* Orario e spunte sotto la nuvoletta */
+.message-meta {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    font-size: 11px;
+    color: var(--text-muted);
+    margin-top: 5px;
+    padding: 0 4px;
+}
+
+.check-icon {
+    font-size: 16px;
+    color: var(--primary);
+}
+
+/* Barra di inserimento inferiore */
+.chat-footer {
+    position: sticky;
+    bottom: 0;
+    width: 100%;
+    background-color: var(--surface-white);
+    border-top: 1px solid var(--border-light);
+    padding: 12px 16px;
+}
+
+.input-container {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.text-input {
+    flex: 1;
+    background-color: var(--input-bg);
+    border: none;
+    outline: none;
+    height: 46px;
+    border-radius: 9999px;
+    padding: 0 20px;
+    font-family: inherit;
+    font-size: 15px;
+    color: var(--text-main);
+}
+
+.text-input::placeholder {
+    color: var(--text-muted);
+}
+
+.send-button {
+    width: 46px;
+    height: 46px;
+    border-radius: 50%;
+    border: none;
+    background-color: var(--primary);
+    color: var(--surface-white);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    box-shadow: 0 4px 10px rgba(0, 105, 72, 0.25);
+    transition: background-color 0.2s ease;
+}
+
+.send-button:hover {
+    background-color: var(--primary-container);
+}
+
+.send-button .material-symbols-outlined {
+    font-size: 20px;
+    margin-left: 2px;
+}
