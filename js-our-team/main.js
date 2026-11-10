@@ -47,6 +47,7 @@ const teamMembers = [
 const totaleElementi = teamMembers.length;
 console.log(totaleElementi); */
 /* 
+
 // Seleziona il contenitore flex
 const container = document.getElementById('flex-container'); //da creare in html
  */
@@ -65,12 +66,12 @@ function getMemberCard(member) {
     //min-vh-175 di bootstrap non funziona?
     return `
 <div class="col-12 col-md-6 col-lg-4 mb-4">
-            <div class="card rounded-0 border-0 text-bg-dark">
-                <div class="row g-0 align-items-center">
-                    <div class="col-5">
-                        <img src="assets/${member.img}" class="img-fluid rounded-0" alt="${member.name}">
+            <div class="card h-100 rounded-0 border-0 text-bg-dark">
+                <div class="row h-100 g-0 align-items-center">
+                    <div class="col-5 h-100">
+                        <img src="assets/${member.img}" class="object-fit-cover w-100 h-100" alt="${member.name}">
                     </div>
-                    <div class="col-7">
+                    <div class="col-7 h-100">
                         <div class="card-body">
                             <h3 class="card-title text-uppercase fw-bold">${member.name}</h3>
                             <p class="card-text">${member.role}</p>

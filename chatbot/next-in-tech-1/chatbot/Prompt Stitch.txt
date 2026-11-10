@@ -1,0 +1,12 @@
+Voglio creare un’applicazione di chat AI chiamata “gIAda”. Caricherò due immagini: `icon.png`, da usare come avatar del chatbot gIAda, e `user.png`, da usare come avatar dell’utente. Gli avatar devono essere circolari.
+
+Ho bisogno di una sola schermata, una chat costituita SOLTANTO DA QUESTI ELEMENTI:
+
+- Un header fisso in alto con avatar del chatbot, nome “gIAda”, badge “AI”, stato “Online” e avatar dell’utente.
+- Un’area centrale scrollabile che mostri una conversazione di esempio generica, con un singolo messaggio dell’utente allineato a destra ed un singolo messaggio di gIAda allineato a sinistra.
+- Gli avatar devono comparire accanto ai rispettivi messaggi.
+- Un campo di input fisso in basso, con placeholder “Scrivi un messaggio...”, e un pulsante circolare verde per inviare il messaggio.
+
+Non inventare o inserire elementi non richiesti. 
+
+Mantieni uno stile pulito, moderno, minimale e professionale. Usa sfondo chiaro, header e messaggi di Jade bianchi, blu navy per i messaggi dell’utente e verde come colore di accento per badge, stato online e pulsante di invio. Usa una tipografia sans-serif contemporanea, angoli arrotondati, ombre discrete e spaziature generose. L’applicazione deve essere responsive. Tutti i testi devono essere in italiano.
