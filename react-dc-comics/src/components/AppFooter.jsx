@@ -1,48 +1,25 @@
+import comicsArray from "../data/comics";
+import ComicCard from "./ComicCard";
+
 
 function AppFooter() {
-
-    const pastificioLinksObj = [
-        { label: "Il Pastificio", href: "#" },
-        { label: "Grano", href: "#" },
-    ];
-
-    const productsLinksObj = [
-        { label: "Le classiche", href: "#" },
-        { label: "Le Integrali", href: "#" },
-    ];
-
-    const pastificioLinks = pastificioLinksObj.map((link, index) => (
-        <li key={index}>
-            <a href={link.href}>{link.label}</a>
-        </li>
-    ));
-
-    const productsLinks = productsLinksObj.map((link, index) => (
-        <li key={index}>
-            <a href={link.href}>{link.label}</a>
-        </li>
-    ));
-
     return (
-        <footer className="container">
-            <nav className="footer-nav">
-                <div className="footer-col">
+        <main>
+            <div className="container">
+                <h2>Il mio Catalogo</h2>
+                <div className="comics-grid">
+                    {comicsArray.map((comic) => (
+                        <ComicCard
+                            key={comic.id}
+                            thumb={comic.thumb}
+                            title={comic.title}
+                        /* price={comic.price} */
+                        />
+                    ))}
                 </div>
-                <div className="footer-col">
-                    <div>
-                        <h4>Pastificio</h4>
-                        <ul>{pastificioLinks}</ul>
-                    </div>
-                </div>
-                <div className="footer-col">
-                    <div>
-                        <h4>Prodotti</h4>
-                        <ul>{productsLinks}</ul>
-                    </div>
-                </div>
-            </nav>
-        </footer>
-    )
+            </div>
+        </main>
+    );
 }
 
 export default AppFooter;

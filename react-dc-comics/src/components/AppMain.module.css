@@ -1,0 +1,56 @@
+/* Sezione scura principale */
+.mainSection {
+    background-color: #1c1c1c;
+    color: #ffffff;
+    padding: 50px 0 30px;
+}
+
+/* Contenitore centrato per allineare tutto ai bordi della pagina */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* Griglia Flexbox per le 6 card per riga */
+.cardsGrid {
+    display: flex;
+    flex-wrap: wrap;
+    /* Permette alle card di andare a capo dopo 6 elementi */
+    gap: 28px 20px;
+    /* 28px spazio verticale tra le righe, 20px orizzontale */
+}
+
+/* Singola card */
+.card {
+    /* Calcolo: (100% / 6 colonne) - (spazio totale dei 5 gap orizzontali / 6) */
+    width: calc((100% - (20px * 5)) / 6);
+    display: flex;
+    flex-direction: column;
+}
+
+/* Contenitore quadrato per ritagliare l'immagine come nel mockup */
+.imageWrapper {
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    /* Rende il box perfettamente quadrato */
+    overflow: hidden;
+    margin-bottom: 12px;
+}
+
+.imageWrapper img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    /* Riempie il quadrato senza deformare la copertina */
+    object-position: top;
+    /* Mantiene visibile la parte alta con il titolo */
+}
+
+.cardTitle {
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    font-weight: 500;
+    margin: 0;
+    line-height: 1.3;
+}
