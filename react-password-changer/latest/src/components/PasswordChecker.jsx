@@ -6,6 +6,8 @@ export default function PasswordChecker() {
   const [result, setResult] = useState(null)
 
   const inputCheck = () => {
+    /* qui facciamo il confronto delle password e stampiamo il messaggio */
+    /* in questo caso uso if-else al posto dell'operatore ternario visto a lezione per essere più esplicito */
     if (pass1 === pass2 && pass1 !== '') {
       setResult(`Password cambiata. Lunghezza: ${pass1.length}`)
     } else {
@@ -17,16 +19,19 @@ export default function PasswordChecker() {
 
   return (
     <div>
+      Password
       <input
         type="password"
         value={pass1}
         onChange={(e) => setPass1(e.target.value)}
       />
+      Cambia password
       <input
         type="password"
         value={pass2}
         onChange={(e) => setPass2(e.target.value)}
       />
+
       <button onClick={inputCheck}>controlla password</button>
 
       {result && <p>{result}</p>}

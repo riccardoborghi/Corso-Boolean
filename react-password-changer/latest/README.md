@@ -19,8 +19,7 @@ Creo un componente React semplice per la gestione e validazione del cambio passw
 
 ## 🧠 Logica e Architettura dello Stato
 
-
-* `newPassword`: [descrizione]
-* `confirmPassword`: [descrizione]
-* ...
-
+- useState usati:
+* `setPass1`: [prima password da confrontare]
+* `setPass2`: [seconda password da confrontare]
+* `setResul`: [messaggio da visualizzare in interfaccia per il risultato]
