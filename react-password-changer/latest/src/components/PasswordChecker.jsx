@@ -7,7 +7,7 @@ export default function PasswordChecker() {
 
   const inputCheck = () => {
     /* qui facciamo il confronto delle password e stampiamo il messaggio */
-    /* in questo caso uso if-else al posto dell'operatore ternario visto a lezione per essere più esplicito */
+    /* operatore ternario ? */
     if (pass1 === pass2 && pass1 !== '') {
       setResult(`Password cambiata. Lunghezza: ${pass1.length}`)
     } else {
