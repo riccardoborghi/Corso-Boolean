@@ -16,7 +16,7 @@ export default function PasswordChecker() {
     setPass1('')
     setPass2('')
   }
-
+  /* commento */
   return (
     <div>
       Password
