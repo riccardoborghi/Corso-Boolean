@@ -1,13 +1,15 @@
-# React + Vite
+# Ciao studente, per mettere in pratica quanto visto oggi puoi partire da questa repo già avviata
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Troverai un'applicazione React con un form da gestire. I dati al momento non vengono salvati da nessuna parte.
 
-Currently, two official plugins are available:
+## COME PARTIRE
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Installa le dipendenze, ignora avvisi riguardo le vulnerabilità.
+Avvia il progetto e verifica di visualizzare il form in browser.
+Studia l'app e capisci dove si trova il form.
 
-## Expanding the ESLint configuration
+## COSA FARE
 
-If you are developing a production application, we recommend using TypeScript and enable type-aware lint rules. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
-# lc-react-tickets-form
+Gestisci il form in modo che le varie input scrivano nello state già predisposto. Al click sul bottone vogliamo essere in grado di stampare in console l'intero oggetto.
+
+Buon lavoro a tutti! 🚀
