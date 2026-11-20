@@ -18,13 +18,15 @@ const TicketForm = () => {
 		console.log(ticketData)
 	}
 
+	//questa funzione gestisce gli input
 	function handleInput(event) {
-		//verifico l'input
+		//verifico l'input e le sue proprietà con un console log
 		const { name, type, value } = event.target;
 		console.log(`Nome: "${name}" - Tipo ${type} - Valore: ${value}`);
-
+		//scrivo il nuovo input in un nuovo oggetto tramite shallow-copy
 		const nuovoStato = {
 			...ticketData,
+			[name]: value
 		};
 
 		setTicketData(nuovoStato);
