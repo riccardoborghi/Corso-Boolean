@@ -1,12 +1,21 @@
-import { Link } from "react-router";
+import { NavLink } from "react-router";
 
 function Navbar() {
+    const getLinkClass = ({ isActive }) =>
+        isActive ? "nav-link active" : "nav-link";
+
     return (
         <header>
-            <nav>
-                <Link to="/">Home</Link> |{" "}
-                <Link to="/about">Chi siamo</Link> |{" "}
-                <Link to="/prodotti">Prodotti</Link>
+            <nav className="navbar">
+                <NavLink to="/" className={getLinkClass}>
+                    Home
+                </NavLink>
+                <NavLink to="/about" className={getLinkClass}>
+                    Chi siamo
+                </NavLink>
+                <NavLink to="/prodotti" className={getLinkClass}>
+                    Prodotti
+                </NavLink>
             </nav>
         </header>
     );

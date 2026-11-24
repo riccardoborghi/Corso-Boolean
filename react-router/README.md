@@ -12,22 +12,22 @@ Checklist operativa per lo sviluppo del frontend e delle pagine principali.
 ## 1. Routing di base e Navbar condivisa
 
 - [x] Creare almeno tre pagine principali con contenuto provvisorio di verifica:
-  - [ ] Homepage (`/`)
-  - [ ] Chi siamo (`/about`)
-  - [ ] Prodotti (`/prodotti`)
-- [ ] Implementare una `Navbar` visibile su tutte le pagine per navigare tra `/`, `/about` e `/prodotti`
-- [ ] Verificare che la navigazione tra le rotte funzioni senza ricaricare la pagina
+  - [x] Homepage (`/`)
+  - [x] Chi siamo (`/about`)
+  - [x] Prodotti (`/prodotti`)
+- [x] Implementare una `Navbar` visibile su tutte le pagine per navigare tra `/`, `/about` e `/prodotti`
+- [x] Verificare che la navigazione tra le rotte funzioni senza ricaricare la pagina
 
 ## 2. Stili, contenuti e catalogo da Fake Store API
 
-- [ ] Rifinire il CSS base (header/navbar, indicatore del link attivo, layout generale)
+- [X] Rifinire il CSS base (header/navbar, indicatore del link attivo, layout generale)
 - [ ] Inserire i primi contenuti reali nelle pagine (es. immagine/sezione in Home, testo in Chi siamo)
-- [ ] Nella pagina Prodotti (`/prodotti`), recuperare l'array di prodotti da `https://fakestoreapi.com/products`
-- [ ] Salvare i prodotti in uno state e gestire gli stati intermedi (caricamento / eventuale errore)
-- [ ] Iterare l'array in pagina renderizzando varie card con almeno:
-  - [ ] `title`
-  - [ ] `price`
-  - [ ] `image`
+- [x] Nella pagina Prodotti (`/prodotti`), recuperare l'array di prodotti da `https://fakestoreapi.com/products`
+- [x] Salvare i prodotti in uno state e gestire gli stati intermedi (caricamento / eventuale errore)
+- [x] Iterare l'array in pagina renderizzando varie card con almeno:
+  - [x] `title`
+  - [x] `price`
+  - [x] `image`
 
 ## 3. Pagina di dettaglio parametrica
 

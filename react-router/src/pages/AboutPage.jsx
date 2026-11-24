@@ -1,5 +1,5 @@
 function AboutPage() {
-    return <p>Chi siamo</p>;
+    return <p>Lo store fake di Boolean!</p>;
 }
 
 export default AboutPage;

@@ -1,5 +1,5 @@
 function HomePage() {
-    return <p>Homepage</p>;
+    return <p>Boolean Store!</p>;
 }
 
 export default HomePage;

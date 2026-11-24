@@ -1,0 +1,59 @@
+.navbar {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 24px;
+    padding: 16px;
+}
+
+.nav-link {
+    text-decoration: none;
+    color: inherit;
+    font-weight: 500;
+}
+
+.nav-link.active {
+    color: #f97316;
+}
+
+/* =============CARDS PRODOTTI ======================= */
+
+/* Contenitore flessibile che manda a capo le card quando non c'è spazio */
+.products-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+}
+
+/* Singola card: larghezza flessibile fino a un massimo di 250px */
+.product-card {
+    flex: 1 1 220px;
+    max-width: 250px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 12px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 8px;
+}
+
+/* Immagine contenuta e leggibile dentro la card */
+.product-card img {
+    width: 100%;
+    height: 160px;
+    object-fit: contain;
+}
+
+/* Titolo compatto per non allungare troppo la card */
+.product-card h2 {
+    font-size: 1rem;
+    margin: 0;
+}
+
+/* Prezzo in evidenza */
+.product-card p {
+    font-weight: bold;
+    margin: 0;
+}
