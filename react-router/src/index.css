@@ -57,3 +57,35 @@
     font-weight: bold;
     margin: 0;
 }
+
+/* Link dettaglio prodotto */
+.product-link {
+    display: inline-block;
+    text-align: center;
+    background-color: #f97316;
+    color: white;
+    text-decoration: none;
+    padding: 8px 12px;
+    border-radius: 4px;
+    font-weight: 500;
+    margin-top: 8px;
+}
+
+.product-link:hover {
+    background-color: #ea580c;
+}
+
+/* ============= DETTAGLIO PRODOTTO ======================= */
+.product-detail {
+    max-width: 600px;
+    margin: 24px auto;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.product-detail img {
+    max-width: 100%;
+    max-height: 300px;
+    object-fit: contain;
+}

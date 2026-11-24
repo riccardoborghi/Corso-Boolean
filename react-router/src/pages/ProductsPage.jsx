@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { Link } from "react-router";
 
 function ProductsPage() {
     // Stato per salvare l'array completo dei prodotti restituito dall'API
@@ -32,6 +33,9 @@ function ProductsPage() {
                             <img src={product.image} alt={product.title} />
                             <h2>{product.title}</h2>
                             <p>{product.price} €</p>
+                            <Link to={`/prodotti/${product.id}`} className="product-link">
+                                Vedi dettaglio
+                            </Link>
                         </article>
                     ))}
                 </div>
