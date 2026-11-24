@@ -16,6 +16,7 @@ const TicketForm = () => {
 	function handleForm(event) {
 		event.preventDefault()
 		console.log(ticketData)
+		setTicketData(ticketDefault)
 	}
 
 	//questa funzione gestisce gli input
@@ -44,6 +45,7 @@ const TicketForm = () => {
 							type="text"
 							name="name"
 							className="form-control"
+							value={ticketData.name}
 							required
 							onChange={handleInput}
 						/>
@@ -91,7 +93,14 @@ const TicketForm = () => {
 					{/* Descrizione problema */}
 					<div className="mb-3">
 						<label className="form-label">Descrizione del problema</label>
-						<textarea name="description" className="form-control" rows="4" required />
+						<textarea
+							name="description"
+							className="form-control"
+							rows="4"
+							value={ticketData.description}
+							onChange={handleInput}
+							required
+						/>
 					</div>
 
 					{/* Pulsante di invio */}
