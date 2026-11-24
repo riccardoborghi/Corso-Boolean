@@ -11,7 +11,7 @@ Checklist operativa per lo sviluppo del frontend e delle pagine principali.
 
 ## 1. Routing di base e Navbar condivisa
 
-- [ ] Creare almeno tre pagine principali con contenuto provvisorio di verifica:
+- [x] Creare almeno tre pagine principali con contenuto provvisorio di verifica:
   - [ ] Homepage (`/`)
   - [ ] Chi siamo (`/about`)
   - [ ] Prodotti (`/prodotti`)
