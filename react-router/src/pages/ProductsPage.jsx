@@ -19,7 +19,7 @@ function ProductsPage() {
 
     return (
         <section>
-            <h1>Prodotti del mese</h1>
+            <h1>Prodotti</h1>
 
             {/* Stato intermedio di caricamento */}
             {loading ? (
